@@ -1,0 +1,24 @@
+.m-padding-tb-min{
+    padding-top: 0.2em !important; 
+    padding-bottom: 0.2em !important;
+}
+.m-padding-tb-max{
+    padding-top: 5em !important; 
+    padding-bottom: 5em !important;
+}
+.m-footer-pic-size{
+    width: 120px !important;
+}
+/* text */
+.m-text-thin{
+    font-weight: 300 !important;
+}
+.m-text-spaced{/* 字间距 */
+    letter-spacing: 1px !important;
+}
+.m-text-lined{/* 行间距 */
+    line-height: 1.8 !important;
+}
+.m-opacity-min{
+    opacity: 0.8 !important;
+}
