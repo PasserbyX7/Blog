@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<blog>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "cn.DemoApplication",
+            "projectName": "blog",
+            "args": ""
+        }
+    ]
+}
