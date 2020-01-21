@@ -1,9 +1,23 @@
+body{
+    background: url("../img/bg.png") !important;
+}
+.m-shadow-small{
+    -webkit-box-shadow: 0px 4px 8px rgba(0,0,0,0.2) !important;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2) !important;
+}
 .m-margin-tb-tiny{
     margin-top: 0.3em !important;
     margin-bottom: 0.3em !important;
 }
 .m-margin-top-large{
     margin-top: 2em !important;
+}
+.m-margin-bottom-mini{
+    margin-bottom: 0.5em !important;
+}
+.m-padding-lr-responsive{
+    padding-left: 4em !important;
+    padding-right: 4em !important;
 }
 .m-padding-mini{
     padding: 0.2em !important;
@@ -30,6 +44,9 @@
 .m-qr-code-pic-size{
     width: 10em !important;
 }
+.m-qr-code-pic-size-big{
+    width: 130px !important;
+}
 .m-body-pic-size{
     width: 400px !important;
 }
@@ -51,6 +68,9 @@
 .m-text-lined{/* 行间距 */
     line-height: 1.8 !important;
 }
+.m-opacity-tiny{
+    opacity: 0.6 !important;
+}
 .m-opacity-min{
     opacity: 0.8 !important;
 }
@@ -64,6 +84,10 @@
 
 .m-container{
     max-width: 72em !important;
+    margin: auto;
+}
+.m-container-small{
+    max-width: 60em !important;
     margin: auto;
 }
 .m-top-right{
@@ -80,5 +104,12 @@
     }
     .m-mobile-show{
         display: block !important;
+    }
+    .m-padding-lr-responsive{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .m-mobile-wide{
+        width: 100% !important;
     }
 }
