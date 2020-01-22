@@ -11,16 +11,9 @@
 </head>
 
 <body>
-    <nav th:replace="commons/back::menu(1)"></nav>
+    <nav th:replace="commons/back::menu(0)"></nav>
     <!-- 二级导航 -->
-    <div class="ui attached pointing menu">
-        <div class="ui container">
-            <div class="right menu">
-                <a href="" class="item">发布</a>
-                <a href="" class="active teal item">列表</a>
-            </div>
-        </div>
-    </div>
+    <div th:replace="commons/back::navigation(0)"></div>
     <!-- 中间内容 -->
     <div class="m-padding-tb-large m-container">
         <div class="ui container">

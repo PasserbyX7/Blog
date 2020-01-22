@@ -1,10 +1,12 @@
 body{
     background: url("/img/bg.png") !important;
 }
+/* shadow */
 .m-shadow-small{
     -webkit-box-shadow: 0px 4px 8px rgba(0,0,0,0.2) !important;
     box-shadow: 0px 4px 8px rgba(0,0,0,0.2) !important;
 }
+/* margin */
 .m-margin-tb-tiny{
     margin-top: 0.3em !important;
     margin-bottom: 0.3em !important;
@@ -15,6 +17,7 @@ body{
 .m-margin-bottom-mini{
     margin-bottom: 0.5em !important;
 }
+/* padding */
 .m-padding-lr-responsive{
     padding-left: 4em !important;
     padding-right: 4em !important;
@@ -44,6 +47,7 @@ body{
     padding-top: 5em !important; 
     padding-bottom: 5em !important;
 }
+/* size */
 .m-qr-code-pic-size{
     width: 10em !important;
 }
@@ -74,12 +78,14 @@ body{
 .m-text-lined{/* 行间距 */
     line-height: 1.8 !important;
 }
+/* opacity */
 .m-opacity-tiny{
     opacity: 0.6 !important;
 }
 .m-opacity-min{
     opacity: 0.8 !important;
 }
+/* color */
 .m-black{
     color: #333333 !important;
 }
@@ -87,7 +93,7 @@ body{
 .m-inline-block{
     display: inline-block !important;
 }
-
+/* container */
 .m-container{
     max-width: 72em !important;
     margin: auto;
@@ -96,11 +102,21 @@ body{
     max-width: 60em !important;
     margin: auto;
 }
+/* position */
 .m-top-right{
     position:absolute;
     top: 0;
     right: 0;
 }
+.m-fixed{
+    position: fixed !important;
+    z-index: 10 !important;
+}
+.m-right-center{
+    bottom: 32% !important;
+    right: 0 !important;
+}
+/* 适配 */
 .m-mobile-show{
     display: none !important;
 }
@@ -118,12 +134,4 @@ body{
     .m-mobile-wide{
         width: 100% !important;
     }
-}
-.m-fixed{
-    position: fixed !important;
-    z-index: 10 !important;
-}
-.m-right-center{
-    bottom: 32% !important;
-    right: 0 !important;
 }

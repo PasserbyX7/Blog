@@ -11,9 +11,9 @@
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui teal header item">Blog</h2>
-                <a href="#" class="active item m-mobile-hide m-item" th:classappend="${n==1}?'active'"><i class="home icon"></i> 首页</a>
-                <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==2}?'active'"><i class="idea icon"></i>分类</a>
-                <a href="#" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"><i class="tags icon"></i>标签</a>
+                <a href="/" class="item m-mobile-hide m-item" th:classappend="${n==1}?'active'"><i class="home icon"></i> 首页</a>
+                <a href="/types" class="item m-mobile-hide m-item" th:classappend="${n==2}?'active'"><i class="idea icon"></i>分类</a>
+                <a href="/tags" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"><i class="tags icon"></i>标签</a>
                 <div class="right menu m-item m-mobile-hide">
                     <div class="ui dropdown item">
                         <div class="text">
@@ -32,5 +32,14 @@
             <i class="sidebar icon"></i>
         </a>
     </nav>
+    <!-- 二级导航 -->
+    <div th:fragment="navigation(n)" class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="#" class="item" th:classappend="${n==1}?'active teal'">发布</a>
+                <a href="#" class="item" th:classappend="${n==2}?'active teal'">列表</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
