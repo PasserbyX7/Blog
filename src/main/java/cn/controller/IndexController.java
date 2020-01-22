@@ -20,4 +20,8 @@ public class IndexController {
     public String blog(){
         return "blog";
     }
+    @GetMapping("/loginSuccess")
+    public String loginSuccess(){
+        return "admin/index";
+    }
 }

@@ -1,5 +1,5 @@
 body{
-    background: url("../img/bg.png") !important;
+    background: url("/img/bg.png") !important;
 }
 .m-shadow-small{
     -webkit-box-shadow: 0px 4px 8px rgba(0,0,0,0.2) !important;
