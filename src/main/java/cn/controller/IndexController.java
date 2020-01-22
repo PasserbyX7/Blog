@@ -3,8 +3,6 @@ package cn.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import cn.exception.NotFoundException;
-
 /**
  * IndexController
  */
@@ -12,6 +10,10 @@ import cn.exception.NotFoundException;
 public class IndexController {
     @GetMapping("/")
     public String index(){
-        throw new NotFoundException("博客不存在");
+        return "index";
+    }
+    @GetMapping("/about")
+    public String about(){
+        return "about";
     }
 }
