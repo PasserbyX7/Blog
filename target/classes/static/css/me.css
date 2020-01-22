@@ -25,6 +25,9 @@ body{
 .m-padding-tiny{
     padding: 0.3em !important;
 }
+.m-padding{
+    padding: 0.7em !important;
+}
 .m-padding-tb-mini{
     padding-top: 0.2em !important; 
     padding-bottom: 0.2em !important;
@@ -52,6 +55,9 @@ body{
 }
 .m-footer-pic-size{
     width: 120px !important;
+}
+.m-toc-size{
+    width: 200px !important;
 }
 /* text */
 .m-text{
@@ -112,4 +118,12 @@ body{
     .m-mobile-wide{
         width: 100% !important;
     }
+}
+.m-fixed{
+    position: fixed !important;
+    z-index: 10 !important;
+}
+.m-right-center{
+    bottom: 32% !important;
+    right: 0 !important;
 }
