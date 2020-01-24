@@ -5,14 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * ManagerController
+ * BlogsController
  */
 @Controller
 @RequestMapping("/admin")
-public class ManagerController {
+public class BlogsController {
 
-    @GetMapping("/manager")
-    public String manager(){
-        return "admin/manager";
+    @GetMapping("/blogs")
+    public String blogs(){
+        return "admin/blogs";
+    }
+    @GetMapping("/editBlog")
+    public String editBlog(){
+        return "admin/editBlog";
     }
 }
