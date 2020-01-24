@@ -9,6 +9,10 @@ spring:
   profiles:
     active:
     - dev
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 ---
 spring:
   thymeleaf:

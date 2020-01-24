@@ -15,8 +15,8 @@ public class BlogsController {
     public String blogs(){
         return "admin/blogs";
     }
-    @GetMapping("/editBlog")
+    @GetMapping("/blogEdit")
     public String editBlog(){
-        return "admin/editBlog";
+        return "admin/blogEdit";
     }
 }

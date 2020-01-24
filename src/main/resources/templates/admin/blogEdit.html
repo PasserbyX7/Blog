@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/lib/editormd/css/editormd.min.css">
     <link rel="stylesheet" href="/css/me.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <title>分类编辑</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <title>博客编辑</title>
 </head>
 
 <body>
@@ -35,7 +36,9 @@
                     </div>
                 </div>
                 <div class="field">
-                    <textarea name="content" cols="30" rows="10"></textarea>
+                    <div id="md-content" style="z-index: 1;">
+                        <textarea name="content" cols="30" rows="10" style="display: none;"></textarea>
+                    </div>
                 </div>
                 <div class="two fields">
                     <div class="field">
@@ -44,7 +47,7 @@
                             <div class="ui fluid selection dropdown">
                                 <input type="hidden" name="type">
                                 <i class="dropdown icon"></i>
-                                <div class="defalut text"></div>
+                                <div class="default text"></div>
                                 <div class="menu">
                                     <div class="item" data-value="原创">原创</div>
                                     <div class="item" data-value="转载">转载</div>
@@ -58,7 +61,7 @@
                             <div class="ui fluid multiple search selection dropdown">
                                 <input type="hidden" name="tag">
                                 <i class="dropdown icon"></i>
-                                <div class="defalut text"></div>
+                                <div class="default text"></div>
                                 <div class="menu">
                                     <div class="item" data-value="原创">原创</div>
                                     <div class="item" data-value="转载">转载</div>
@@ -82,8 +85,8 @@
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="reward" name="reward" class="hidden">
-                            <label for="reward">赞赏</label>
+                            <input type="checkbox" id="upvote" name="upvote" class="hidden">
+                            <label for="upvote">赞赏</label>
                         </div>
                     </div>
                     <div class="field">
@@ -112,18 +115,28 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src="/lib/editormd/editormd.min.js"></script>
 <script>
+    var contentEditor;
+    $(function () {
+        contentEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/lib/editormd/lib/"
+        })
+    });
     $(".toggle").click(function () {
         $(".m-item").toggleClass("m-mobile-hide");
     });
     $(".ui.dropdown").dropdown();
     $(".ui.form").form({
-        fields:{
-            title:{
-                identifier:"title",
-                rules:[{
-                    type:"empty",
-                    prompt:"请输入博客标题"
+        fields: {
+            title: {
+                identifier: "title",
+                rules: [{
+                    type: "empty",
+                    prompt: "请输入博客标题"
                 }]
             }
         }
