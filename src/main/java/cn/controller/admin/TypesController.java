@@ -27,7 +27,7 @@ import cn.service.TypeService;
 @RequestMapping("/admin")
 public class TypesController {
 
-    @GetMapping("/types")
+    @GetMapping("/types")//来到展示页面，分页显示所有type
     public String types(@PageableDefault(size=10,sort = {"id"},direction=Sort.Direction.DESC) Pageable pageable,Model model){
         model.addAttribute("page",typeService.listType(pageable));
         return "admin/types";
@@ -61,7 +61,7 @@ public class TypesController {
     //改
     @PutMapping("/type")
     public String updateType(Type type){
-        typeService.updateType(type);
+        typeService.saveType(type);
         return "redirect:/admin/types";
     }
     @Autowired

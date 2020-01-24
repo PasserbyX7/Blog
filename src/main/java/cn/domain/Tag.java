@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 /**
@@ -20,6 +21,7 @@ public class Tag {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "标签名不能为空")
     private String name;
     @ManyToMany(mappedBy = "tags")
     private List<Blog>blogs=new ArrayList<>();

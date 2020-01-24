@@ -17,8 +17,8 @@
     <!-- 中间内容 -->
     <div class="m-padding-tb-large m-container">
         <div class="ui container">
-            <div class="ui large success message">
-                <h1>欢迎登录</h1>
+            <div class="ui large success message" style="text-align: center;">
+                <h1 th:text="${session.user.getNickName()+'，欢迎回来'}"></h1>
             </div>
             <img src="https://i.picsum.photos/id/400/1000/400.jpg" alt="" class="ui rounded bordered fluid image">
         </div>

@@ -1,6 +1,5 @@
 package cn.service.imp;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.dao.TypeDao;
 import cn.domain.Type;
-import cn.exception.NotFoundException;
 import cn.service.TypeService;
 
 /**
@@ -26,21 +24,12 @@ public class TypeServiceImp implements TypeService {
 
     @Override
     public Type getType(Long id) {
-        return typeDao.getOne(id);
+        return typeDao.findById(id).orElse(null);
     }
 
     @Override
     public Page<Type> listType(Pageable pageable) {
         return typeDao.findAll(pageable);
-    }
-
-    @Transactional
-    @Override
-    public Type updateType(Type type) {
-        Type oldType=typeDao.findById(type.getId()).orElse(null);
-        if (oldType == null)
-            throw new NotFoundException("类型不存在");
-        return typeDao.save(type);
     }
 
     @Transactional
