@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import cn.dao.UserDao;
 import cn.domain.User;
 import cn.service.UserService;
+import cn.util.MD5Util;
 
 /**
  * UserServiceImp
@@ -15,7 +16,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User checkUser(String username, String password) {
-        return userDao.findByUsernameAndPassword(username, password);
+        return userDao.findByUsernameAndPassword(username, MD5Util.code(password));
     }
     @Autowired
     private UserDao userDao;

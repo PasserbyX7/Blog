@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - MD5Util",
+            "request": "launch",
+            "mainClass": "cn.util.MD5Util",
+            "projectName": "blog"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-DemoApplication<blog>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
