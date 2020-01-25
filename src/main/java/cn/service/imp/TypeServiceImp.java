@@ -1,5 +1,7 @@
 package cn.service.imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,6 +45,12 @@ public class TypeServiceImp implements TypeService {
         return typeDao.findByName(name);
     }
 
+    @Override
+    public List<Type> listType() {
+        return typeDao.findAll();
+    }
+
     @Autowired
     private TypeDao typeDao;
+
 }

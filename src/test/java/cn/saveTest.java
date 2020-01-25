@@ -1,14 +1,21 @@
 package cn;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.util.StringUtils;
 
 import cn.dao.TagDao;
+import cn.domain.Blog;
 import cn.domain.Tag;
-import cn.domain.User;
+import cn.service.TagService;
 import cn.service.UserService;
+import cn.util.MD5Util;
 
 
 /**
@@ -16,24 +23,37 @@ import cn.service.UserService;
  */
 
 
-@SpringBootTest
-@WebAppConfiguration
+// @SpringBootTest
+// @WebAppConfiguration
 public class saveTest {
 
     @Test
     public void test() {
-        // Tag tag=new Tag();
-        // tag.setId(1L);
-        // tag.setName("hi");
-        // tagDao.save(tag);
-        // User user=new User();
-        // user.getAvatar();
-        // user.getNickName();
-        User user=userService.checkUser("passerby", "cao981127");
-        System.out.println(user);
+        System.out.println("-------------------------");
+        Blog blog=new Blog();
+        // Tag tag1=new Tag();
+        // tag1.setId(1L);
+        // Tag tag2=new Tag();
+        // tag2.setId(2L);
+        // Tag tag3=new Tag();
+        // tag3.setId(3L);
+        // blog.getTags().add(tag1);
+        // blog.getTags().add(tag2);
+        // blog.getTags().add(tag3);
+        // //List<Long>[1,2,3]->"1,2,3"
+        // List<String> result=blog.getTags().stream().map(Tag::getId).map(String::valueOf).collect(Collectors.toList());
+        // System.out.println(String.join(",", result));
+        String tagIds="";
+        blog=null;
+        String.join(",", blog.getTags().stream().map(Tag::getId).map(String::valueOf).collect(Collectors.toList()));
+        // Arrays.asList(tagIds.split(",")).stream().map(Long::parseLong).collect(Collectors.toList());
+        // System.out.println(Arrays.asList(tagIds.split(",")).stream().map(Long::parseLong).collect(Collectors.toList()));
+        // tagService.listTag(Arrays.asList(tagIds.split(",")).stream().map(Long::parseLong).collect(Collectors.toList()));
     }
-    @Autowired
-    TagDao tagDao;
-    @Autowired
-    UserService userService;
+    // @Autowired
+    // TagDao tagDao;
+    // @Autowired
+    // UserService userService;
+    // @Autowired
+    // TagService tagService;
 }

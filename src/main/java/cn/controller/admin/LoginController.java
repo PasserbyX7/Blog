@@ -21,31 +21,41 @@ import cn.service.UserService;
 public class LoginController {
 
     @GetMapping
-    public String toLoginPage(){
-        return "admin/login";
+    public String toLoginPage(HttpSession session) {
+        if (session.getAttribute("user") != null)// 如果已登录，直接进入首页
+            return INDEX;
+        else
+            return LOGIN;
     }
+
     @GetMapping("/index")
     public String index() {
-        return "admin/index";
+        return INDEX;
     }
+
     @PostMapping("/login")
-    public String login(String username,String password,HttpSession session,RedirectAttributes attributes,Model model){
-        User user=userService.checkUser(username, password);
-        if(user!=null){
+    public String login(String username, String password, HttpSession session, RedirectAttributes attributes,
+            Model model) {
+        User user = userService.checkUser(username, password);
+        if (user != null) {
             session.setAttribute("user", user);
-            user.setPassword(null);//把密码传到前台很不安全
-            return "admin/index";
-        }
-        else{
-            attributes.addFlashAttribute("message","用户名或密码错误");
-            return "redirect:/admin";
+            user.setPassword(null);// 把密码传到前台很不安全
+            return INDEX;
+        } else {
+            attributes.addFlashAttribute("message", "用户名或密码错误");
+            return REDIRECT_LOGIN;
         }
     }
+
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/admin";
+        return REDIRECT_LOGIN;
     }
+
     @Autowired
     private UserService userService;
+    private static final String LOGIN = "admin/login";
+    private static final String INDEX = "admin/index";
+    private static final String REDIRECT_LOGIN = "redirect:/admin";
 }

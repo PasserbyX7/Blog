@@ -30,17 +30,17 @@ public class TypesController {
     @GetMapping("/types")//来到展示页面，分页显示所有type
     public String types(@PageableDefault(size=10,sort = {"id"},direction=Sort.Direction.DESC) Pageable pageable,Model model){
         model.addAttribute("page",typeService.listType(pageable));
-        return "admin/types";
+        return LIST;
     }
     @GetMapping("/typeEdit")//点击添加按钮，跳转至Edit页面
     public String toTypeAddPage(Model model){
         model.addAttribute("type",new Type());
-        return "admin/typeEdit";
+        return EDIT;
     }
     @GetMapping("/type/{id}")//点击编辑按钮，跳转至Edit页面
-    public String toTypeEditPage(@PathVariable("id")Long id,Model model){
+    public String toTypeEditPage(@PathVariable Long id,Model model){
         model.addAttribute("type",typeService.getType(id));
-        return "admin/typeEdit";
+        return EDIT;
     }
     //增
     @PostMapping("/type")
@@ -50,20 +50,23 @@ public class TypesController {
         if(bindingResult.hasErrors())
             return "admin/typeEdit";
         typeService.saveType(type);
-        return "redirect:/admin/types";
+        return REDIRECT_LIST;
     }
     //删
     @DeleteMapping("/type/{id}")
-    public String deleteType(@PathVariable("id") Long id) {
+    public String deleteType(@PathVariable Long id) {
         typeService.deleteType(id);
-        return "redirect:/admin/types";
+        return REDIRECT_LIST;
     }
     //改
     @PutMapping("/type")
     public String updateType(Type type){
         typeService.saveType(type);
-        return "redirect:/admin/types";
+        return REDIRECT_LIST;
     }
     @Autowired
     private TypeService typeService;
+    private static final String LIST="admin/types";
+    private static final String EDIT="admin/typeEdit";
+    private static final String REDIRECT_LIST="redirect:/admin/types";
 }

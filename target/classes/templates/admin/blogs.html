@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/me.css">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <title>后台管理</title>
 </head>
 
@@ -17,20 +17,24 @@
     <!-- 中间内容 -->
     <div class="m-padding-tb-large m-container">
         <div class="ui container">
-            <form action="" class="ui secondary segment form" method="POST">
+            <div class="ui secondary segment form">
+                <input type="hidden" name="page">
                 <div class="inline fields">
                     <div class="field">
                         <input type="text" name="title" placeholder="标题">
                     </div>
                     <div class="field">
-                        <div class="ui selection dropdown">
-                            <input type="hidden" name="type">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">分类</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">小说</div>
-                                <div class="item" data-value="2">诗歌</div>
+                        <div class="ui labeled action input">
+                            <div class="ui type selection dropdown">
+                                <input type="hidden" name="type.id">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分类</div>
+                                <div class="menu">
+                                    <div th:each="type : ${types}" class="item" th:data-value="${type.id}"
+                                        th:text="${type.name}"></div>
+                                </div>
                             </div>
+                            <button class="ui compact clear button">clear</button>
                         </div>
                     </div>
                     <div class="field">
@@ -40,43 +44,52 @@
                         </div>
                     </div>
                     <div class="field">
-                        <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
+                        <button type="button" id="search-btn" class="ui mini teal basic button"><i
+                                class="search icon"></i>搜索</button>
                     </div>
                 </div>
-            </form>
+            </div>
             <div class="ui segment">
-                <table class="ui compact teal table">
+                <table th:fragment="blogList" class="ui compact teal table" id="table-container">
                     <thead>
                         <tr>
                             <th></th>
                             <th>标题</th>
                             <th>类型</th>
                             <th>推荐</th>
+                            <th>状态</th>
                             <th>更新时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>小说集</td>
-                            <td>小说</td>
-                            <td>是</td>
-                            <td>2020-1-22</td>
+                        <tr th:each="blog,iterStat : ${page.content}">
+                            <td th:text="${iterStat.count}"></td>
+                            <td th:text="${blog.title}"></td>
+                            <td th:th:text="${blog.type.name}"></td>
+                            <td th:text="${blog.recommend?'是':'否'}"></td>
+                            <td th:text="${blog.publish?'已发布':'草稿'}"></td>
+                            <td th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}"></td>
                             <td>
-                                <a href="" class="ui mini teal basic button">编辑</a>
-                                <a href="" class="ui mini red basic button">删除</a>
+                                <form th:action="@{/admin/blog/{id}(id=${blog.id})}" method="POST">
+                                    <a th:href="@{/admin/blogEdit/{id}(id=${blog.id})}"
+                                        class="ui mini teal basic button">编辑</a>
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button type="submit" class="ui mini red basic button">删除</button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="6">
-                                <div class="ui mini pagination menu">
-                                    <a href="" class="item">上一页</a>
-                                    <a href="" class="item">下一页</a>
+                            <th colspan="7">
+                                <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+                                    <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item"
+                                        th:unless="${page.first}">上一页</a>
+                                    <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item"
+                                        th:unless="${page.last}">下一页</a>
                                 </div>
-                                <a href="#" class="ui mini right floated teal basic button">新增</a>
+                                <a href="/admin/blogEdit" class="ui mini right floated teal basic button">新增</a>
                             </th>
                         </tr>
                     </tfoot>
@@ -93,6 +106,27 @@
         $(".m-item").toggleClass("m-mobile-hide");
     });
     $(".ui.dropdown").dropdown();
+
+    function page(obj) {
+        $("[name='page']").val($(obj).data("page")); //将页数赋值给隐藏域中的page对象
+        loadPage();
+    }
+    $("#search-btn").click(function () {
+        $("[name='page']").val(0);
+        loadPage();
+    });
+
+    function loadPage() {
+        $("#table-container").load("/admin/blogs/search",{
+            title:$("[name='title']").val(),
+            recommend: $("[name='recommend']").prop("checked"),
+            page: $("[name='page']").val(),
+            typeId:$("[name='type.id']").val()
+        });
+    }
+    $(".clear.button").click(function () {
+        $(".ui.dropdown ").dropdown("clear");
+    })
 </script>
 
 </html>

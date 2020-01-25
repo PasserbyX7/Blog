@@ -23,7 +23,7 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String nickName;
+    private String nickname;
     private String username;
     private String password;
     private String email;

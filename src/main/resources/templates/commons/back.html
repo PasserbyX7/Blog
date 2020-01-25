@@ -17,8 +17,8 @@
                 <div class="right menu m-item m-mobile-hide">
                     <div class="ui dropdown item">
                         <div class="text">
-                            <img th:src="${session.user.getAvatar()}" class="ui avatar image">
-                            <span th:text="${session.user.getNickName()}"></span>
+                            <img th:src="${session.user.avatar}" class="ui avatar image">
+                            <span th:text="${session.user.nickname}"></span>
                         </div>
                         <i class="dropdown icon"></i>
                         <div class="menu">

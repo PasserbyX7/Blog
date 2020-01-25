@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - UserServiceImp",
+            "request": "launch",
+            "mainClass": "cn.service.imp.UserServiceImp",
+            "projectName": "blog"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MD5Util",
             "request": "launch",
             "mainClass": "cn.util.MD5Util",

@@ -30,17 +30,17 @@ public class TagController {
     @GetMapping("/tags")//来到展示页面，分页显示所有tag
     public String tags(@PageableDefault(size=10,sort = {"id"},direction=Sort.Direction.DESC) Pageable pageable,Model model){
         model.addAttribute("page",tagService.listTag(pageable));
-        return "admin/tags";
+        return LIST;
     }
     @GetMapping("/tagEdit")//点击添加按钮，跳转至Edit页面
     public String toTagAddPage(Model model){
         model.addAttribute("tag",new Tag());
-        return "admin/tagEdit";
+        return EDIT;
     }
     @GetMapping("/tag/{id}")//点击编辑按钮，跳转至Edit页面
-    public String toTagEditPage(@PathVariable("id")Long id,Model model){
+    public String toTagEditPage(@PathVariable Long id,Model model){
         model.addAttribute("tag",tagService.getTag(id));
-        return "admin/tagEdit";
+        return EDIT;
     }
     //增
     @PostMapping("/tag")
@@ -48,22 +48,25 @@ public class TagController {
         if(tagService.getTagByName(tag.getName())!=null)
             bindingResult.rejectValue("name", "nameError","该标签已存在");
         if(bindingResult.hasErrors())
-            return "admin/tagEdit";
+            return EDIT;
         tagService.saveTag(tag);
-        return "redirect:/admin/tags";
+        return REDIRECT_LIST;
     }
     //删
     @DeleteMapping("/tag/{id}")
-    public String deleteTag(@PathVariable("id") Long id) {
+    public String deleteTag(@PathVariable Long id) {
         tagService.deleteTag(id);
-        return "redirect:/admin/tags";
+        return REDIRECT_LIST;
     }
     //改
     @PutMapping("/tag")
     public String updateTag(Tag tag){
         tagService.saveTag(tag);
-        return "redirect:/admin/tags";
+        return REDIRECT_LIST;
     }
     @Autowired
     private TagService tagService;
+    private static final String LIST="admin/tags";
+    private static final String EDIT="admin/tagEdit";
+    private static final String REDIRECT_LIST="redirect:/admin/tags";
 }
