@@ -1,5 +1,9 @@
 package cn.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import cn.domain.Comment;
+import cn.domain.User;
 import cn.service.BlogService;
 import cn.service.CommentService;
 
@@ -20,15 +25,22 @@ public class CommentController {
 
     @GetMapping("/comments/{blogId}")//展示博客评论
     public String comments(@PathVariable Long blogId,Model model){
-        model.addAttribute("comments",blogService.getBlog(blogId).getComments());
+        model.addAttribute("comments",commentService.listCommentByBlogId(blogId));
         return "blog::commentList";
     }
 
     @PostMapping("/comment")//增
-    public String post(Comment comment) {
+    public String post(Comment comment,HttpSession session) {
+        User user=(User)session.getAttribute("user");
+        if(user!=null){
+            comment.setAvatar(user.getAvatar());
+            comment.setAdminComment(true);
+        }else{
+            comment.setAvatar(avatar);
+            comment.setAdminComment(false);
+        }
         Long blogId=comment.getBlog().getId();
         comment.setBlog(blogService.getBlog(blogId));
-        comment.setAvatar(avatar);
         commentService.saveComment(comment);
         return "redirect:/comments/"+blogId;
     }

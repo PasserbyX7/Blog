@@ -1,5 +1,6 @@
 package cn;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +29,7 @@ import cn.domain.Blog;
 import cn.domain.Comment;
 import cn.domain.Tag;
 import cn.service.BlogService;
+import cn.service.CommentService;
 import cn.service.TagService;
 import cn.service.UserService;
 import cn.util.MD5Utils;
@@ -44,22 +46,36 @@ public class saveTest {
     @Test
     public void test() {
         System.out.println("-----------------------------------");
-        // // String content=blogDao.getOne(8L).getContent();
-        // String content="一切";
-        // String result=MarkdownUtils.markdownToHTMLExtensions(content);
-        // System.out.println(result);
-        // System.out.println(blogDao.findGroupByYear());
-        // blogDao.findAllByOrderByCreateTimeDesc().forEach(e -> {
-        //     System.out.println(e.getCreateTime());
-        // });
-        
-        System.out.println(avatar);
-        Sort sort=Sort.by(Sort.Direction.DESC, "createTime");
-        List<Comment>result=commentDao.findByBlogId(6L, sort);
+        Sort sort=Sort.by(Sort.Direction.ASC, "createTime");
+        List<Comment>list=commentDao.findByBlogId(19L, sort);
+        List<Comment>result=new ArrayList<>();
+        list.forEach(comment->{
+            if(comment.getParentComment()==null){
+                comment.setReplyComments(new ArrayList<>());
+                result.add(comment);
+            }
+            else{
+                Comment parent=comment.getParentComment();
+                if(parent.getParentComment()==null)//parent是顶级节点
+                    parent.getReplyComments().add(comment);
+                else//parent的parent是顶级节点
+                    parent.getParentComment().getReplyComments().add(comment);
+            }
+        });
         result.forEach(comment->{
-            System.out.println(comment.getCreateTime());
+            System.out.println(comment.getContent());
+            System.out.println("*********");
+            comment.getReplyComments().forEach(item->{
+                System.out.println(item.getContent());
+            }
+            );
         });
     }
+    //A
+    //BCDE孙
+    //F
+    //G
+    //H孙
     @Value("${comment.avatar}")
     private String avatar;
     // public static String render(String text) {
@@ -79,6 +95,8 @@ public class saveTest {
     // UserService userService;
     // @Autowired
     // TagService tagService;
+    // @Autowired
+    // CommentService commentService;
     @Autowired
     CommentDao commentDao;
 }

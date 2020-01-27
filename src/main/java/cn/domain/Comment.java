@@ -30,6 +30,7 @@ public class Comment {
     private String content;
     private String avatar;
     private LocalDateTime createTime;
+    private Boolean adminComment;
     @ManyToOne
     private Blog blog;
     @OneToMany(mappedBy = "parentComment")

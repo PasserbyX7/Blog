@@ -86,6 +86,9 @@ body{
     opacity: 0.8 !important;
 }
 /* color */
+.m-teal{
+    color: #00B5AD !important;
+}
 .m-black{
     color: #333333 !important;
 }

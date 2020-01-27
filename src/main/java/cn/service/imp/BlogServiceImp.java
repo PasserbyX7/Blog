@@ -53,9 +53,10 @@ public class BlogServiceImp implements BlogService {
         blog.setUpdateTime(LocalDateTime.now());
         return blogDao.save(blog);
     }
-
+    @Transactional
     @Override
     public Blog getBlog(Long id) {
+        blogDao.updateViewNum(id);
         return blogDao.findById(id).orElse(null);
     }
 
