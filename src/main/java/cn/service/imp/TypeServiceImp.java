@@ -1,10 +1,13 @@
 package cn.service.imp;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +51,18 @@ public class TypeServiceImp implements TypeService {
     @Override
     public List<Type> listType() {
         return typeDao.findAll();
+    }
+
+    @Override
+    public List<Type> listTopType(Integer num) {
+        Sort sort=Sort.by(Sort.Direction.DESC, "blogs.size");
+        Pageable pageable=PageRequest.of(0,num,sort);
+        return typeDao.findTop(pageable);
+    }
+
+    @Override
+    public Long getTotalNum() {
+        return typeDao.count();
     }
 
     @Autowired

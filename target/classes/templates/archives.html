@@ -21,18 +21,24 @@
                         <h3 class="ui teal header">归档</h3>
                     </div>
                     <div class="column right aligned">
-                        共 <h2 class="ui orange header m-inline-block m-text-thin">14</h2> 篇博客
+                        共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${blogNum}"></h2> 篇博客
                     </div>
                 </div>
             </div>
-            <h2 class="ui center aligned header">2019</h2>
-            <div class="ui fluid vertical menu">
-                <a href="#" class="item">
-                    <span><i class="mini teal circle icon"></i> 昆古尼尔</span>
-                    <div class="ui teal basic label">原创</div>
-                </a>
+            <div th:each="item : ${archiveList}">
+                <br>
+                <h2 class="ui center aligned header" th:text="${item.first}"></h2>
+                <div class="ui fluid vertical menu ">
+                    <a class="item" th:each="blog : ${item.second}" th:href="@{/blog/{id}(id=${blog.id})}">
+                        <span>
+                            <i class="mini teal circle icon"></i>
+                            <span th:text="${blog.title}"></span>
+                            <div class="ui orange basic label " th:text="${#temporals.format(blog.createTime,'MMMdd')}"></div>
+                        </span>
+                        <div class="ui teal basic label " th:text="${blog.flag}"></div>
+                    </a>
+                </div>
             </div>
-            <h2 class="ui center aligned header">2020</h2>
         </div>
     </div>
     <footer th:replace="commons/index::footer"></footer>

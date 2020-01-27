@@ -17,5 +17,7 @@ public interface TypeService {
     Type getTypeByName(String name);
     Page<Type> listType(Pageable pageable);
     List<Type> listType();
+    List<Type>listTopType(Integer num);
+    Long getTotalNum();
     void deleteType(Long id);
 }

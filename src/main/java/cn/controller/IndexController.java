@@ -1,35 +1,48 @@
 package cn.controller;
 
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import cn.domain.Blog;
+import cn.domain.Tag;
+import cn.service.BlogService;
+import cn.service.TagService;
+import cn.service.TypeService;
 
 /**
  * IndexController
  */
 @Controller
 public class IndexController {
+
+
     @GetMapping("/")
-    public String index(){
+    public String blogs(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Model model){
+        model.addAttribute("page",blogService.listBlog(pageable));
+        model.addAttribute("types", typeService.listTopType(typeNum));
+        model.addAttribute("tags", tagService.listTopTag(tagNum));
+        model.addAttribute("recommendBlogs", blogService.listTopBlog(recommendBlogNum));
         return "index";
     }
-    @GetMapping("/about")
-    public String about(){
-        return "about";
-    }
-    @GetMapping("/blog")
-    public String blog(){
-        return "blog";
-    }
-    @GetMapping("/archives")
-    public String archives(){
-        return "archives";
-    }
-    @GetMapping("/tags")
-    public String tags(){
-        return "tags";
-    }
-    @GetMapping("/types")
-    public String types(){
-        return "types";
-    }
+    @Autowired  
+    private BlogService blogService;
+    @Autowired  
+    private TypeService typeService;
+    @Autowired
+    private TagService tagService;
+    @Value("${index.typeNum}")
+    private Integer typeNum;
+    @Value("${index.tagNum}")
+    private Integer tagNum;
+    @Value("${index.recommendBlogNum}")
+    private Integer recommendBlogNum;
 }

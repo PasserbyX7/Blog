@@ -1,5 +1,6 @@
 package cn.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -35,17 +37,17 @@ public class Blog {
     @Basic(fetch = FetchType.LAZY)
     private String content;
     private String picture;
+    @NotNull
     private String flag;
+    private String description;
     private Integer viewNum;
     private boolean reward;
     private boolean recommend;
     private boolean reproduction;
     private boolean publish;
     private boolean commentable;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateTime;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
     @ManyToOne
     private Type type;
     @ManyToMany(cascade = CascadeType.PERSIST)

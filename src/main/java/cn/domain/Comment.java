@@ -1,5 +1,6 @@
 package cn.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,8 +29,7 @@ public class Comment {
     private String email;
     private String content;
     private String avatar;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;
+    private LocalDateTime createTime;
     @ManyToOne
     private Blog blog;
     @OneToMany(mappedBy = "parentComment")

@@ -12,15 +12,17 @@
             <div class="ui inverted secondary stackable menu">
                 <a href="/admin/index"><h2 class="ui teal header item">Blog</h2></a>
                 <a href="/" class="item m-mobile-hide m-item" th:classappend="${n==1}?'active'"><i class="home icon"></i> 首页</a>
-                <a href="/types" class="item m-mobile-hide m-item" th:classappend="${n==2}?'active'"><i class="idea icon"></i>分类</a>
-                <a href="/tags" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"><i class="tags icon"></i>标签</a>
+                <a href="/types/-1" class="item m-mobile-hide m-item" th:classappend="${n==2}?'active'"><i class="idea icon"></i>分类</a>
+                <a href="/tags/-1" class="item m-mobile-hide m-item" th:classappend="${n==3}?'active'"><i class="tags icon"></i>标签</a>
                 <a href="/archives" class="item m-mobile-hide m-item" th:classappend="${n==4}?'active'"><i class="clone icon"></i>归档</a>
                 <a href="/about" class="item m-mobile-hide m-item" th:classappend="${n==5}?'active'"><i class="info icon"></i>关于我</a>
                 <div class="right item m-mobile-hide m-item">
-                    <div class="ui icon inverted transparent input">
-                        <input type="text" placeholder="Search">
-                        <i class="search link icon"></i>
-                    </div>
+                    <form action="/search" target="_blank" name="search">
+                        <div class="ui icon inverted transparent input">
+                            <input type="text" placeholder="Search" name="query">
+                            <i class="search link icon" onclick="document.forms['search'].submit()"></i>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -39,18 +41,16 @@
                     </div>
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined">博客</h4>
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined">友情链接</h4>
                     <div class="ui inverted link list">
-                        <a href="#" class="item">用户故事</a>
-                        <a href="#" class="item">用户故事</a>
-                        <a href="#" class="item">用户故事</a>
+                        <a href="https://www.aliyun.com/" target="_blank" class="item">阿里云</a>
                     </div>
                 </div>
                 <div class="three wide column">
                     <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined">联系我</h4>
                     <div class="ui inverted link list">
-                        <a href="#" class="item">Email：756635176@qq.com</a>
-                        <a href="#" class="item">QQ：756635176</a>
+                        <a href="#" class="item" th:text="#{footer.email}"></a>
+                        <a href="#" class="item"th:text="#{footer.qq}"></a>
                     </div>
                 </div>
                 <div class="seven wide column">

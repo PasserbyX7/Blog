@@ -3,9 +3,9 @@ package cn.util;
 import java.security.MessageDigest;
 
 /**
- * MD5Util
+ * MD5Utils
  */
-public class MD5Util {
+public class MD5Utils {
     public static String code(String str){
         try {
             MessageDigest md=MessageDigest.getInstance("MD5");

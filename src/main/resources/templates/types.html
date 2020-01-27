@@ -21,112 +21,68 @@
                         <h3 class="ui teal header">分类</h3>
                     </div>
                     <div class="column right aligned">
-                        共 <h2 class="ui orange header m-inline-block m-text-thin">14</h2> 个
+                        共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#arrays.length(types)}"></h2> 个
                     </div>
                 </div>
             </div>
             <div class="ui attached segment">
-                <div class="ui labeled button m-margin-tb-tiny">
-                    <a href="#" class="ui basic teal button">小说</a>
-                    <div class="ui basic teal label">7</div>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny">
-                    <a href="#" class="ui basic button">诗歌</a>
-                    <div class="ui basic label">7</div>
+                <div class="ui labeled button m-margin-tb-tiny" th:each="type : ${types}">
+                    <a class="ui basic button" th:text="${type.name}" th:href="@{/types/{id}(id=${type.id})}" th:classappend="${type.id==activeTypeId}?'teal'"></a>
+                    <div class="ui basic label" th:text="${#arrays.length(type.blogs)}" th:classappend="${type.id==activeTypeId}?'teal'"></div>
                 </div>
             </div>
         </div>
         <div class="ui top attached teal segment">
-            <div class="ui segment vertical padded m-padding-tb-big">
-                <div class="ui mobile reversed stackable grid">
+            <div class="ui segment vertical padded m-padding-tb-big" th:each="blog : ${page.content}">
+                <div class="ui middle aligned mobile reversed stackable grid">
                     <!-- article -->
                     <div class="eleven wide column">
-                        <h3 class="ui header">走吧（北岛）</h3>
-                        <p class="m-text">
-                            走吧，落叶吹进深谷，歌声却没有归宿。走吧，冰上的月光，已从河面上溢出。走吧，眼睛望着同一片天空，心敲击着暮色的鼓。走吧，我们没有失去记忆，我们去寻找生命的湖。走吧，路呵路，飘满了红罂粟。
-                        </p>
+                        <h3 class="ui header"><a target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black"
+                                th:text="${blog.title}"></a></h3>
+                        <p class="m-text" th:text="|${blog.content}...|"></p>
                         <!-- footer -->
-                        <div class="ui stackable grid">
+                        <div class="ui grid">
                             <!-- left -->
                             <div class="eleven wide column">
                                 <div class="ui horizontal link list mini">
                                     <div class="item">
-                                        <img src="https://i.picsum.photos/id/1001/100/150.jpg" alt=""
-                                            class="ui avatar image">
-                                        <div class="content"><a href="#" class="header">路人</a></div>
+                                        <!-- 头像 -->
+                                        <a href="/about">
+                                            <img class="ui avatar image" th:src="${blog.user.avatar}">
+                                        </a>
+                                        <div class="content"><a href="/about" class="header"
+                                                th:text="${blog.user.nickname}"></a></div>
                                     </div>
                                     <class class="item">
-                                        <i class="calender icon"></i>2020-1-21
+                                        <i class="calender icon"></i><span th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd')}"></span>
                                     </class>
                                     <class class="item">
-                                        <i class="eye icon"></i>7
+                                        <i class="eye icon"></i><span th:text="${blog.viewNum}"></span>
                                     </class>
                                 </div>
                             </div>
                             <!-- right -->
                             <div class="five wide column right aligned">
-                                <a href="#" class="ui label teal basic m-padding-tiny m-text-thin">诗歌</a>
+                                <a href="#" class="ui label teal basic m-padding-tiny m-text-thin" th:text="${blog.type.name}"></a>
                             </div>
                         </div>
                     </div>
                     <div class="five wide column">
                         <!-- image -->
-                        <a href="#">
-                            <img src="https://i.picsum.photos/id/1000/700/450.jpg" alt=""
-                                class="ui rounded image m-body-pic-size">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ui segment vertical padded m-padding-tb-big">
-                <div class="ui mobile reversed stackable grid">
-                    <!-- article -->
-                    <div class="eleven wide column">
-                        <h3 class="ui header">走吧（北岛）</h3>
-                        <p class="m-text">
-                            走吧，落叶吹进深谷，歌声却没有归宿。走吧，冰上的月光，已从河面上溢出。走吧，眼睛望着同一片天空，心敲击着暮色的鼓。走吧，我们没有失去记忆，我们去寻找生命的湖。走吧，路呵路，飘满了红罂粟。
-                        </p>
-                        <!-- footer -->
-                        <div class="ui stackable grid">
-                            <!-- left -->
-                            <div class="eleven wide column">
-                                <div class="ui horizontal link list mini">
-                                    <div class="item">
-                                        <img src="https://i.picsum.photos/id/1001/100/150.jpg" alt=""
-                                            class="ui avatar image">
-                                        <div class="content"><a href="#" class="header">路人</a></div>
-                                    </div>
-                                    <class class="item">
-                                        <i class="calender icon"></i>2020-1-21
-                                    </class>
-                                    <class class="item">
-                                        <i class="eye icon"></i>7
-                                    </class>
-                                </div>
-                            </div>
-                            <!-- right -->
-                            <div class="five wide column right aligned">
-                                <a href="#" class="ui label teal basic m-padding-tiny m-text-thin">诗歌</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="five wide column">
-                        <!-- image -->
-                        <a href="#">
-                            <img src="https://i.picsum.photos/id/1000/700/450.jpg" alt=""
-                                class="ui rounded image m-body-pic-size">
+                        <a target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
+                            <img class="ui rounded image m-body-pic-size" th:src="${blog.picture}">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="ui bottom attached segment">
-            <div class="ui two column grid middle aligned">
+            <div class="ui two column grid middle aligned" th:if="${page.totalPages}">
                 <div class="column">
-                    <a href="" class="ui button teal basic mini">上一页</a>
+                    <a th:href="|/types/${activeTypeId}?page=${page.number-1}|" th:unless="${page.first}" class="ui button teal basic mini">上一页</a>
                 </div>
                 <div class="column right aligned">
-                    <a href="" class="ui button teal basic mini">下一页</a>
+                    <a th:href="|/types/${activeTypeId}?page=${page.number+1}|" th:unless="${page.last}" class="ui button teal basic mini">下一页</a>
                 </div>
             </div>
         </div>

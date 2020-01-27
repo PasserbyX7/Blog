@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.domain.Blog;
@@ -44,21 +43,21 @@ public class BlogsController {
         return EDIT;
     }
     @GetMapping("/blogs")
-    public String blogs(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Blog blog,Model model){
+    public String blogs(@PageableDefault(size = 10,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Blog blog,Model model){
         model.addAttribute("page",blogService.listBlog(pageable, blog));
         model.addAttribute("types",typeService.listType());
         return LIST;
     }
     @PostMapping("/blogs/search")
-    public String search(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) 
-    Pageable pageable,Blog blog,Model model,Long typeId){
+    public String search(@PageableDefault(size = 10,sort = {"updateTime"}, direction = Sort.Direction.DESC) 
+    Pageable pageable,Blog blog,Model model){
         Type type=new Type();
-        type.setId(typeId);
-        blog.setType(type);
+        // type.setId(typeId);
+        // blog.setType(type);
         model.addAttribute("page",blogService.listBlog(pageable, blog));
         return "admin/blogs::blogList";
     }
-    //增
+    //增、改二合一
     @PostMapping("/blog")
     public String addBlog(Blog blog,String tagIds,HttpSession session){
         blog.setType(typeService.getType(blog.getType().getId()));
@@ -73,12 +72,6 @@ public class BlogsController {
     @DeleteMapping("/blog/{id}")
     public String deleteBlog(@PathVariable Long id) {
         blogService.deleteBlog(id);
-        return REDIRECT_LIST;
-    }
-    //改
-    @PutMapping("/blog")
-    public String updateBlog(Blog blog,String tagIds,HttpSession session){
-        blogService.saveBlog(blog);
         return REDIRECT_LIST;
     }
     /**

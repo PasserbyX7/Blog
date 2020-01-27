@@ -69,7 +69,7 @@
                             <td th:th:text="${blog.type.name}"></td>
                             <td th:text="${blog.recommend?'是':'否'}"></td>
                             <td th:text="${blog.publish?'已发布':'草稿'}"></td>
-                            <td th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}"></td>
+                            <td th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd HH:mm')}"></td>
                             <td>
                                 <form th:action="@{/admin/blog/{id}(id=${blog.id})}" method="POST">
                                     <a th:href="@{/admin/blogEdit/{id}(id=${blog.id})}"
@@ -118,10 +118,10 @@
 
     function loadPage() {
         $("#table-container").load("/admin/blogs/search",{
-            title:$("[name='title']").val(),
-            recommend: $("[name='recommend']").prop("checked"),
-            page: $("[name='page']").val(),
-            typeId:$("[name='type.id']").val()
+            "title":$("[name='title']").val(),
+            "recommend": $("[name='recommend']").prop("checked"),
+            "page": $("[name='page']").val(),
+            "type.id":$("[name='type.id']").val()
         });
     }
     $(".clear.button").click(function () {

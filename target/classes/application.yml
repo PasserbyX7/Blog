@@ -1,4 +1,6 @@
 spring:
+  messages:
+    basename: static/i18n/messages
   thymeleaf:
     mode: HTML
   datasource:
@@ -6,6 +8,7 @@ spring:
     password: cao981127
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql:///blog?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    type: com.alibaba.druid.pool.DruidDataSource
   profiles:
     active:
     - dev
@@ -13,6 +16,14 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+#自定义属性配置
+index: 
+  typeNum: 5
+  tagNum: 7
+  recommendBlogNum: 5
+#访客默认头像
+comment: 
+  avatar: /img/defaultAvatar.png
 ---
 spring:
   thymeleaf:
