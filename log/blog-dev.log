@@ -4764,3 +4764,10 @@ org.springframework.expression.spel.SpelParseException: Expression [reply..admin
 2020-01-28 01:41:00.387  INFO 772 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
 2020-01-28 01:41:00.388  INFO 772 --- [restartedMain] cn.DemoApplication                       : Started DemoApplication in 1.771 seconds (JVM running for 2488.84)
 2020-01-28 01:41:00.389  INFO 772 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-28 01:41:05.376  INFO 772 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-28 01:41:05.378  INFO 772 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-28 01:41:05.383  INFO 772 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-01-28 01:41:05.386  INFO 772 --- [http-nio-80-exec-1] cn.aspect.LogAspect                      : request : RequestLog(url=/blog/30, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.BlogShowController.blog, args=[30, {}])
+2020-01-28 01:41:05.409  INFO 772 --- [http-nio-80-exec-1] cn.aspect.LogAspect                      : Result : blog
+2020-01-28 01:41:05.871  INFO 772 --- [http-nio-80-exec-10] cn.aspect.LogAspect                      : request : RequestLog(url=/comments/30, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.CommentController.comments, args=[30, {}])
+2020-01-28 01:41:05.895  INFO 772 --- [http-nio-80-exec-10] cn.aspect.LogAspect                      : Result : blog::commentList
