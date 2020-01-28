@@ -18,10 +18,10 @@ import cn.service.BlogService;
 import cn.service.TypeService;
 
 /**
- * TypeShowController
+ * TypeController
  */
 @Controller
-public class TypeShowController {
+public class TypeController {
 
     @GetMapping("/types/{id}")
     public String types(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {

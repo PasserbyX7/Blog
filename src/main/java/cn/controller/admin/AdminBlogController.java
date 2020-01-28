@@ -25,11 +25,11 @@ import cn.service.TagService;
 import cn.service.TypeService;
 
 /**
- * BlogsController
+ * AdminBlogController
  */
 @Controller
 @RequestMapping("/admin")
-public class BlogsController {
+public class AdminBlogController {
 
     @GetMapping("/blogEdit")//点击添加按钮，跳转至Edit页面
     public String toAddBlog(Model model){

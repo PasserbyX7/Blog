@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import cn.service.BlogService;
 
 /**
- * ArchivesController
+ * ArchiveController
  */
 @Controller
-public class ArchivesController {
+public class ArchiveController {
 
     @GetMapping("/archives")
     public String archives(Model model) {

@@ -25,7 +25,7 @@ import cn.service.TagService;
  */
 @Controller
 @RequestMapping("/admin")
-public class TagController {
+public class AdminTagController {
 
     @GetMapping("/tags")//来到展示页面，分页显示所有tag
     public String tags(@PageableDefault(size=10,sort = {"id"},direction=Sort.Direction.DESC) Pageable pageable,Model model){

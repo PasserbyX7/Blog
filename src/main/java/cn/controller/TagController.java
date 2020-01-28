@@ -17,10 +17,10 @@ import cn.service.BlogService;
 import cn.service.TagService;
 
 /**
- * TagShowController
+ * TagController
  */
 @Controller
-public class TagShowController {
+public class TagController {
 
     @GetMapping("/tags/{id}")
     public String tags(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {

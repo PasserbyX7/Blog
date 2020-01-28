@@ -11,10 +11,10 @@ import cn.service.BlogService;
 import cn.util.MarkdownUtils;
 
 /**
- * BlogShowController
+ * BlogController
  */
 @Controller
-public class BlogShowController {
+public class BlogController {
 
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model) {
