@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import cn.domain.Blog;
 import cn.domain.Type;
 import cn.service.BlogService;
 import cn.service.TypeService;
@@ -25,18 +24,16 @@ public class TypeController {
 
     @GetMapping("/types/{id}")
     public String types(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
+        //拿到以blog个数递减的全部type，作为页面的上半部展示
         List<Type>types=typeService.listTopType((typeService.getTotalNum().intValue()));
-        if(types==null)
-            return "types";
+        //确定被选中的type
         //约定：若前端传来的id值为-1，则默认选中第一个type
-        if(id==-1&&types!=null)
+        if(id==-1)
             id=types.get(0).getId();
-        Blog blog=new Blog();
-        blog.setType(typeService.getType(id));
-        model.addAttribute("page", blogService.listBlog(pageable,blog));
+        model.addAttribute("page", blogService.listBlogByType(pageable,typeService.getType(id)));
         model.addAttribute("types",types);
         model.addAttribute("activeTypeId",id);
-        return "types";
+        return "type";
     }
     @Autowired
     private TypeService typeService;

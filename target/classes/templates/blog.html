@@ -26,10 +26,10 @@
                         <div class="content"><a href="/about" class="header" th:text="${blog.user.nickname}"></a></div>
                     </div>
                     <class class="item">
-                        <i class="calender icon"></i><span th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd')}"></span>
+                        <i class="calender icon"></i><span th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd')}" class="middle aligned"></span>
                     </class>
                     <class class="item">
-                        <i class="eye icon"></i><span th:text="${blog.viewNum}"></span>
+                        <i class="eye icon"></i>&nbsp;&nbsp;<span th:text="${blog.viewNum}" class="middle aligned"></span>
                     </class>
                 </div>
             </div>
@@ -256,7 +256,7 @@
             loadPage();
     })
     function loadPage() {
-        $("#comment-container").load("/comment",{
+        $("#comment-container").load("/comments",{
             "parentComment.id":$("[name='parentComment.id']").val(),
             "blog.id":$("[name='blog.id']").val(),
             "name":$("[name='name']").val(),
@@ -278,7 +278,7 @@
     }
     //页面初次加载时显示评论
     $(function() {
-        $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"");
+        $("#comment-container").load(/*[[@{/comment/{id}(id=${blog.id})}]]*/"");
     })
 </script>
 

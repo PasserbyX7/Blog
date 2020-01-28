@@ -14,11 +14,11 @@ import cn.service.BlogService;
 @Controller
 public class ArchiveController {
 
-    @GetMapping("/archives")
+    @GetMapping("/archive")
     public String archives(Model model) {
         model.addAttribute("archiveList",blogService.listBlogByArchive());
         model.addAttribute("blogNum",blogService.getTotalNum());
-        return "archives";
+        return "archive";
     }
     @Autowired
     BlogService blogService;

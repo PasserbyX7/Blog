@@ -32,8 +32,8 @@
                             <td th:text="${iterStat.count}"></td>
                             <td th:text="${type.name}"></td>
                             <td>
-                                <form th:action="@{/admin/type/{id}(id=${type.id})}" method="POST">
-                                    <a th:href="@{/admin/type/{id}(id=${type.id})}" class="ui mini teal basic button">编辑</a>
+                                <form th:action="@{/admin/types/{id}(id=${type.id})}" method="POST">
+                                    <a th:href="@{/admin/typeEdit/{id}(id=${type.id})}" class="ui mini teal basic button">编辑</a>
                                     <input type="hidden" name="_method" value="delete">
                                     <button type="submit" class="ui mini red basic button">删除</button>
                                 </form>
@@ -44,8 +44,8 @@
                         <tr>
                             <th colspan="3">
                                 <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                                    <a th:href="@{/admin/types(page=${page.number}-1)}" class="item" th:unless="${page.first}">上一页</a>
-                                    <a th:href="@{/admin/types(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
+                                    <a th:href="@{/admin/type(page=${page.number}-1)}" class="item" th:unless="${page.first}">上一页</a>
+                                    <a th:href="@{/admin/type(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
                                 </div>
                                 <a href="/admin/typeEdit" class="ui mini right floated teal basic button">添加</a>
                             </th>

@@ -22,13 +22,15 @@ import cn.service.TagService;
 @Controller
 public class TagController {
 
-    @GetMapping("/tags/{id}")
+    @GetMapping("/tag/{id}")
     public String tags(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
+        //拿到以blog个数递减的全部tag，作为页面的上半部展示
         List<Tag>tags=tagService.listTopTag((tagService.getTotalNum().intValue()));
+        //确定被选中的tag
         //约定：若前端传来的id值为-1，则默认选中第一个tag
         if(id==-1)
             id=tags.get(0).getId();
-        model.addAttribute("page", blogService.listBlog(pageable,tagService.getTag(id)));
+        model.addAttribute("page", blogService.listBlogByTag(pageable,tagService.getTag(id)));
         model.addAttribute("tags",tags);
         model.addAttribute("activeTagId",id);
         return "tags";

@@ -71,7 +71,7 @@
                             <td th:text="${blog.publish?'已发布':'草稿'}"></td>
                             <td th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd HH:mm')}"></td>
                             <td>
-                                <form th:action="@{/admin/blog/{id}(id=${blog.id})}" method="POST">
+                                <form th:action="@{/admin/blogs/{id}(id=${blog.id})}" method="POST">
                                     <a th:href="@{/admin/blogEdit/{id}(id=${blog.id})}"
                                         class="ui mini teal basic button">编辑</a>
                                     <input type="hidden" name="_method" value="delete">

@@ -86,11 +86,22 @@ public class BlogServiceImp implements BlogService {
     }
 
     @Override
-    public Page<Blog> listBlog(Pageable pageable, Tag tag) {
+    public Page<Blog> listBlogByTag(Pageable pageable, Tag tag) {
         return blogDao.findAll(new Specification<Blog>() {
             @Override
 			public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 return cb.equal(root.join("tags").get("id"), tag.getId());
+			}
+            private static final long serialVersionUID = 1L;
+        },pageable);
+    }
+
+    @Override
+    public Page<Blog> listBlogByType(Pageable pageable, Type type) {
+        return blogDao.findAll(new Specification<Blog>() {
+            @Override
+			public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                return cb.equal(root.join("types").get("id"), type.getId());
 			}
             private static final long serialVersionUID = 1L;
         },pageable);

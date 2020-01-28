@@ -27,7 +27,7 @@ import cn.service.TypeService;
 @RequestMapping("/admin")
 public class AdminTypeController {
 
-    @GetMapping("/types")//来到展示页面，分页显示所有type
+    @GetMapping("/type")//来到展示页面，分页显示所有type
     public String types(@PageableDefault(size=10,sort = {"id"},direction=Sort.Direction.DESC) Pageable pageable,Model model){
         model.addAttribute("page",typeService.listType(pageable));
         return LIST;
@@ -37,13 +37,13 @@ public class AdminTypeController {
         model.addAttribute("type",new Type());
         return EDIT;
     }
-    @GetMapping("/type/{id}")//点击编辑按钮，跳转至Edit页面
+    @GetMapping("/typeEdit/{id}")//点击编辑按钮，跳转至Edit页面
     public String toTypeEditPage(@PathVariable Long id,Model model){
         model.addAttribute("type",typeService.getType(id));
         return EDIT;
     }
     //增
-    @PostMapping("/type")
+    @PostMapping("/types")
     public String addType(@Valid Type type,BindingResult bindingResult ,RedirectAttributes attributes){
         if(typeService.getTypeByName(type.getName())!=null)
             bindingResult.rejectValue("name", "nameError","该分类已存在");
@@ -53,13 +53,13 @@ public class AdminTypeController {
         return REDIRECT_LIST;
     }
     //删
-    @DeleteMapping("/type/{id}")
+    @DeleteMapping("/types/{id}")
     public String deleteType(@PathVariable Long id) {
         typeService.deleteType(id);
         return REDIRECT_LIST;
     }
     //改
-    @PutMapping("/type")
+    @PutMapping("/types")
     public String updateType(Type type){
         typeService.saveType(type);
         return REDIRECT_LIST;

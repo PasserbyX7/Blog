@@ -22,13 +22,13 @@ import cn.service.CommentService;
 @Controller
 public class CommentController {
 
-    @GetMapping("/comments/{blogId}")//展示博客评论
+    @GetMapping("/comment/{blogId}")//展示博客评论
     public String comments(@PathVariable Long blogId,Model model){
         model.addAttribute("comments",commentService.listCommentByBlogId(blogId));
         return "blog::commentList";
     }
 
-    @PostMapping("/comment")//增
+    @PostMapping("/comments")//增
     public String post(Comment comment,HttpSession session) {
         User user=(User)session.getAttribute("user");
         if(user!=null){
@@ -41,7 +41,7 @@ public class CommentController {
         Long blogId=comment.getBlog().getId();
         comment.setBlog(blogService.getBlog(blogId));
         commentService.saveComment(comment);
-        return "redirect:/comments/"+blogId;
+        return "redirect:/comment/"+blogId;
     }
     @Value("${comment.avatar}")
     private String avatar;

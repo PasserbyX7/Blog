@@ -19,7 +19,7 @@
     <!-- 中间内容 -->
     <div class="m-padding-tb-large m-container-large">
         <div class="ui container">
-            <form action="/admin/blog" method="POST" class="ui form" id="blog-form" th:object="${blog}">
+            <form action="/admin/blogs" method="POST" class="ui form" id="blog-form" th:object="${blog}">
                 <input type="hidden" name="id" th:value="*{id}">
                 <div class="required field">
                     <div class="ui left labeled input">

@@ -41,7 +41,7 @@ public class AdminBlogController {
         init(model, blogService.getBlog(id));
         return EDIT;
     }
-    @GetMapping("/blogs")
+    @GetMapping("/blog")//blog列表展示页面
     public String blogs(@PageableDefault(size = 10,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Blog blog,Model model){
         model.addAttribute("page",blogService.listBlog(pageable, blog));
         model.addAttribute("types",typeService.listType());
@@ -51,10 +51,10 @@ public class AdminBlogController {
     public String search(@PageableDefault(size = 10,sort = {"updateTime"}, direction = Sort.Direction.DESC) 
     Pageable pageable,Blog blog,Model model){
         model.addAttribute("page",blogService.listBlog(pageable, blog));
-        return "admin/blogs::blogList";
+        return "admin/blog::blogList";
     }
     //增、改二合一
-    @PostMapping("/blog")
+    @PostMapping("/blogs")
     public String addBlog(Blog blog,String tagIds,HttpSession session){
         blog.setType(typeService.getType(blog.getType().getId()));
         //通过Stream将形如"13,23"的字符串转为List<Long>ids，再通过ids查询出Tags并setter
@@ -65,7 +65,7 @@ public class AdminBlogController {
         return REDIRECT_LIST;
     }
     //删
-    @DeleteMapping("/blog/{id}")
+    @DeleteMapping("/blogs/{id}")
     public String deleteBlog(@PathVariable Long id) {
         blogService.deleteBlog(id);
         return REDIRECT_LIST;
@@ -91,7 +91,7 @@ public class AdminBlogController {
     private TypeService typeService;
     @Autowired
     private TagService tagService;
-    private static final String LIST="admin/blogs";
+    private static final String LIST="admin/blog";
     private static final String EDIT="admin/blogEdit";
-    private static final String REDIRECT_LIST="redirect:/admin/blogs";
+    private static final String REDIRECT_LIST="redirect:/admin/blog";
 }
