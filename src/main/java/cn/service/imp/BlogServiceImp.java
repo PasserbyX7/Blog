@@ -2,17 +2,13 @@ package cn.service.imp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -94,8 +90,7 @@ public class BlogServiceImp implements BlogService {
         return blogDao.findAll(new Specification<Blog>() {
             @Override
 			public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                Join join=root.join("tags");
-                return cb.equal(join.get("id"), tag.getId());
+                return cb.equal(root.join("tags").get("id"), tag.getId());
 			}
             private static final long serialVersionUID = 1L;
         },pageable);

@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import cn.domain.Blog;
 import cn.domain.Tag;
 import cn.service.BlogService;
 import cn.service.TagService;

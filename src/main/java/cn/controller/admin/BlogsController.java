@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.domain.Blog;
 import cn.domain.Tag;
-import cn.domain.Type;
 import cn.domain.User;
 import cn.service.BlogService;
 import cn.service.TagService;
@@ -51,9 +50,6 @@ public class BlogsController {
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 10,sort = {"updateTime"}, direction = Sort.Direction.DESC) 
     Pageable pageable,Blog blog,Model model){
-        Type type=new Type();
-        // type.setId(typeId);
-        // blog.setType(type);
         model.addAttribute("page",blogService.listBlog(pageable, blog));
         return "admin/blogs::blogList";
     }

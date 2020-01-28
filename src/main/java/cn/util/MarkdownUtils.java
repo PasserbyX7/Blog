@@ -50,7 +50,7 @@ public class MarkdownUtils {
                         return new CustomAttributeProvider();
                     }
                 }).build();
-        return null;
+        return renderer.render(node);
     }
 
     //处理标签属性
