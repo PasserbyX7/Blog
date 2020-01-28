@@ -4865,3 +4865,224 @@ org.springframework.expression.spel.SpelParseException: Expression [reply..admin
 2020-01-29 03:27:55.021  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
 2020-01-29 03:27:55.024  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Started DemoApplication in 2.275 seconds (JVM running for 367.891)
 2020-01-29 03:27:55.026  INFO 14688 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-29 03:28:47.697  INFO 14688 --- [http-nio-80-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 03:28:47.698  INFO 14688 --- [http-nio-80-exec-10] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 03:28:47.704  INFO 14688 --- [http-nio-80-exec-10] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-01-29 03:30:25.974  INFO 14688 --- [Thread-14] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-29 03:30:25.976  INFO 14688 --- [Thread-14] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 03:30:25.979  INFO 14688 --- [Thread-14] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} closing ...
+2020-01-29 03:30:25.981  INFO 14688 --- [Thread-14] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} closed
+2020-01-29 03:30:26.733  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Starting DemoApplication on DESKTOP-UNS9UHE with PID 14688 (C:\Users\75663\Documents\vscode\blog\target\classes started by 75663 in c:\Users\75663\Documents\vscode\blog)
+2020-01-29 03:30:26.733 DEBUG 14688 --- [restartedMain] cn.DemoApplication                       : Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-01-29 03:30:26.733  INFO 14688 --- [restartedMain] cn.DemoApplication                       : The following profiles are active: dev
+2020-01-29 03:30:27.025  INFO 14688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-29 03:30:27.054  INFO 14688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 5 JPA repository interfaces.
+2020-01-29 03:30:27.110  INFO 14688 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-29 03:30:27.224  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-01-29 03:30:27.225  INFO 14688 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 03:30:27.226  INFO 14688 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-01-29 03:30:27.243  INFO 14688 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 03:30:27.243  INFO 14688 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 506 ms
+2020-01-29 03:30:27.412  INFO 14688 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-29 03:30:27.428  INFO 14688 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} inited
+2020-01-29 03:30:27.434  INFO 14688 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-29 03:30:27.700  INFO 14688 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-29 03:30:27.702  INFO 14688 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 03:30:27.728  INFO 14688 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-29 03:30:28.192  WARN 14688 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-29 03:30:28.277  INFO 14688 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 03:30:28.308  INFO 14688 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-29 03:30:28.508  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-01-29 03:30:28.510  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Started DemoApplication in 1.841 seconds (JVM running for 521.377)
+2020-01-29 03:30:28.511  INFO 14688 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-29 03:30:29.311  INFO 14688 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 03:30:29.312  INFO 14688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 03:30:29.319  INFO 14688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-01-29 03:30:43.178 ERROR 14688 --- [http-nio-80-exec-7] cn.handler.MyExceptionHandler            : url:/admin/blog;exception:{}
+
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:201) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:421) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:367) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getHandlerInternal(RequestMappingHandlerMapping.java:449) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getHandlerInternal(RequestMappingHandlerMapping.java:67) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:395) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1234) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1016) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:94) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2020-01-29 03:30:43.182  WARN 14688 --- [http-nio-80-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-01-29 03:31:50.753  INFO 14688 --- [Thread-19] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-29 03:31:50.756  INFO 14688 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 03:31:50.757  INFO 14688 --- [Thread-19] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closing ...
+2020-01-29 03:31:50.758  INFO 14688 --- [Thread-19] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closed
+2020-01-29 03:31:51.391  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Starting DemoApplication on DESKTOP-UNS9UHE with PID 14688 (C:\Users\75663\Documents\vscode\blog\target\classes started by 75663 in c:\Users\75663\Documents\vscode\blog)
+2020-01-29 03:31:51.391 DEBUG 14688 --- [restartedMain] cn.DemoApplication                       : Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-01-29 03:31:51.391  INFO 14688 --- [restartedMain] cn.DemoApplication                       : The following profiles are active: dev
+2020-01-29 03:31:51.590  INFO 14688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-29 03:31:51.630  INFO 14688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39ms. Found 5 JPA repository interfaces.
+2020-01-29 03:31:51.682  INFO 14688 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-29 03:31:51.808  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-01-29 03:31:51.808  INFO 14688 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 03:31:51.809  INFO 14688 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-01-29 03:31:51.824  INFO 14688 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 03:31:51.824  INFO 14688 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 430 ms
+2020-01-29 03:31:51.894  INFO 14688 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-29 03:31:51.902  INFO 14688 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} inited
+2020-01-29 03:31:51.907  INFO 14688 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-29 03:31:52.073  INFO 14688 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-29 03:31:52.073  INFO 14688 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 03:31:52.092  INFO 14688 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-29 03:31:52.333  WARN 14688 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-29 03:31:52.402  INFO 14688 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 03:31:52.427  INFO 14688 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-29 03:31:52.637  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-01-29 03:31:52.647  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Started DemoApplication in 1.297 seconds (JVM running for 605.513)
+2020-01-29 03:31:52.650  INFO 14688 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-29 03:31:53.778  INFO 14688 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 03:31:53.780  INFO 14688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 03:31:53.787  INFO 14688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-01-29 03:32:02.642 ERROR 14688 --- [http-nio-80-exec-4] cn.handler.MyExceptionHandler            : url:/admin/blog;exception:{}
+
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:201) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:421) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:367) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getHandlerInternal(RequestMappingHandlerMapping.java:449) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.getHandlerInternal(RequestMappingHandlerMapping.java:67) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:395) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1234) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1016) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:94) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2020-01-29 03:32:02.643  WARN 14688 --- [http-nio-80-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-01-29 03:33:06.481  INFO 14688 --- [Thread-24] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-29 03:33:06.482  INFO 14688 --- [Thread-24] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 03:33:06.484  INFO 14688 --- [Thread-24] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closing ...
+2020-01-29 03:33:06.486  INFO 14688 --- [Thread-24] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closed
+2020-01-29 03:33:07.067  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Starting DemoApplication on DESKTOP-UNS9UHE with PID 14688 (C:\Users\75663\Documents\vscode\blog\target\classes started by 75663 in c:\Users\75663\Documents\vscode\blog)
+2020-01-29 03:33:07.067 DEBUG 14688 --- [restartedMain] cn.DemoApplication                       : Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-01-29 03:33:07.067  INFO 14688 --- [restartedMain] cn.DemoApplication                       : The following profiles are active: dev
+2020-01-29 03:33:07.312  INFO 14688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-29 03:33:07.349  INFO 14688 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36ms. Found 5 JPA repository interfaces.
+2020-01-29 03:33:07.412  INFO 14688 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-29 03:33:07.545  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-01-29 03:33:07.545  INFO 14688 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 03:33:07.546  INFO 14688 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-01-29 03:33:07.561  INFO 14688 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 03:33:07.561  INFO 14688 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 491 ms
+2020-01-29 03:33:07.633  INFO 14688 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-29 03:33:07.642  INFO 14688 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} inited
+2020-01-29 03:33:07.646  INFO 14688 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-29 03:33:07.843  INFO 14688 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-29 03:33:07.843  INFO 14688 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 03:33:07.863  INFO 14688 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-29 03:33:08.090  WARN 14688 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-29 03:33:08.162  INFO 14688 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 03:33:08.187  INFO 14688 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-29 03:33:08.368  INFO 14688 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-01-29 03:33:08.369  INFO 14688 --- [restartedMain] cn.DemoApplication                       : Started DemoApplication in 1.34 seconds (JVM running for 681.237)
+2020-01-29 03:33:08.371  INFO 14688 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-29 03:33:08.457  INFO 14688 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 03:33:08.457  INFO 14688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 03:33:08.462  INFO 14688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-01-29 03:36:49.623  INFO 14688 --- [http-nio-80-exec-5] cn.aspect.LogAspect                      : request : RequestLog(url=/, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.IndexController.blogs, args=[Page request [number: 0, size 2, sort: updateTime: DESC], {}])
+2020-01-29 03:36:49.635  WARN 14688 --- [http-nio-80-exec-5] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.blogs.size]; use collection function syntax instead [size(t.blogs)].
+2020-01-29 03:36:49.638  WARN 14688 --- [http-nio-80-exec-5] org.hibernate.orm.deprecation            : HHH90000016: Found use of deprecated 'collection property' syntax in HQL/JPQL query [t.blogs.size]; use collection function syntax instead [size(t.blogs)].
+2020-01-29 03:36:49.643  INFO 14688 --- [http-nio-80-exec-5] cn.aspect.LogAspect                      : Result : index
+2020-01-29 03:36:50.714  INFO 14688 --- [http-nio-80-exec-8] cn.aspect.LogAspect                      : request : RequestLog(url=/blog/3, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.BlogShowController.blog, args=[3, {}])
+2020-01-29 03:36:50.754  INFO 14688 --- [http-nio-80-exec-8] cn.aspect.LogAspect                      : Result : blog
+2020-01-29 03:36:51.240  INFO 14688 --- [http-nio-80-exec-7] cn.aspect.LogAspect                      : request : RequestLog(url=/comments/3, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.CommentController.comments, args=[3, {}])
+2020-01-29 03:36:51.260  INFO 14688 --- [http-nio-80-exec-7] cn.aspect.LogAspect                      : Result : blog::commentList
+2020-01-29 03:36:54.085  INFO 14688 --- [http-nio-80-exec-8] cn.aspect.LogAspect                      : request : RequestLog(url=/blog/3, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.BlogShowController.blog, args=[3, {}])
+2020-01-29 03:36:54.092  INFO 14688 --- [http-nio-80-exec-8] cn.aspect.LogAspect                      : Result : blog
+2020-01-29 03:36:54.441  INFO 14688 --- [http-nio-80-exec-7] cn.aspect.LogAspect                      : request : RequestLog(url=/comments/3, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.CommentController.comments, args=[3, {}])
+2020-01-29 03:36:54.444  INFO 14688 --- [http-nio-80-exec-7] cn.aspect.LogAspect                      : Result : blog::commentList
+2020-01-29 03:36:59.580  INFO 14688 --- [http-nio-80-exec-8] cn.aspect.LogAspect                      : request : RequestLog(url=/blog/3, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.BlogShowController.blog, args=[3, {}])
+2020-01-29 03:36:59.589  INFO 14688 --- [http-nio-80-exec-8] cn.aspect.LogAspect                      : Result : blog
+2020-01-29 03:36:59.985  INFO 14688 --- [http-nio-80-exec-7] cn.aspect.LogAspect                      : request : RequestLog(url=/comments/3, ip=0:0:0:0:0:0:0:1, classMethod=cn.controller.CommentController.comments, args=[3, {}])
+2020-01-29 03:36:59.987  INFO 14688 --- [http-nio-80-exec-7] cn.aspect.LogAspect                      : Result : blog::commentList

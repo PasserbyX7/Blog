@@ -66,7 +66,7 @@ public class TagController {
     }
     @Autowired
     private TagService tagService;
-    private static final String LIST="admin/tags";
+    private static final String LIST="admin/tag";
     private static final String EDIT="admin/tagEdit";
-    private static final String REDIRECT_LIST="redirect:/admin/tags";
+    private static final String REDIRECT_LIST="redirect:/admin/tag";
 }

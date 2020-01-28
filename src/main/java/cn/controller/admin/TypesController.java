@@ -66,7 +66,7 @@ public class TypesController {
     }
     @Autowired
     private TypeService typeService;
-    private static final String LIST="admin/types";
+    private static final String LIST="admin/type";
     private static final String EDIT="admin/typeEdit";
-    private static final String REDIRECT_LIST="redirect:/admin/types";
+    private static final String REDIRECT_LIST="redirect:/admin/type";
 }
