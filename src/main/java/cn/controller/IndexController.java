@@ -21,16 +21,15 @@ import cn.service.TypeService;
 @Controller
 public class IndexController {
 
-
     @GetMapping("/")
-    public String blogs(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Model model){
+    public String blogs(@PageableDefault(size = 5,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Model model){
         model.addAttribute("page",blogService.listBlog(pageable));
         model.addAttribute("types", typeService.listTopType(typeNum));
         model.addAttribute("tags", tagService.listTopTag(tagNum));
         model.addAttribute("recommendBlogs", blogService.listTopBlog(recommendBlogNum));
         return "index";
     }
-    @Autowired  
+    @Autowired
     private BlogService blogService;
     @Autowired  
     private TypeService typeService;

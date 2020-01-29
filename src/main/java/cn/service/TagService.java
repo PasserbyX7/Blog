@@ -21,4 +21,5 @@ public interface TagService {
     List<Tag> listTag(List<Long>ids);
     Long getTotalNum();
     void deleteTag(Long id);
+    boolean containsTag(String tagName);
 }

@@ -18,7 +18,7 @@
     <br><br><br><br><br><br><br><br>
     <div class="m-padding-tb-large m-container">
         <div class="ui container">
-            <form action="/admin/tag" method="POST" class="ui form" th:object="${tag}">
+            <form action="/admin/tags" method="POST" class="ui form" th:object="${tag}">
                 <input type="hidden" name="_method" value="put" th:unless="${#strings.isEmpty(tag.name)}">
                 <input type="hidden" name="id" th:value="*{id}">
                 <div class="required field">

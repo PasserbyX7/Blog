@@ -101,7 +101,7 @@ public class BlogServiceImp implements BlogService {
         return blogDao.findAll(new Specification<Blog>() {
             @Override
 			public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                return cb.equal(root.join("types").get("id"), type.getId());
+                return cb.equal(root.join("type").get("id"), type.getId());
 			}
             private static final long serialVersionUID = 1L;
         },pageable);

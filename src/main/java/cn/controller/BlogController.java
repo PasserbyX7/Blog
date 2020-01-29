@@ -18,6 +18,7 @@ public class BlogController {
 
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model) {
+        //将blog的内容由markdown转为html后送至前端
         Blog blog=blogService.getBlog(id);
         blog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
         model.addAttribute("blog",blog);

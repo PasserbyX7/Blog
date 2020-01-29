@@ -64,6 +64,11 @@ public class TypeServiceImp implements TypeService {
         return typeDao.count();
     }
 
+    @Override
+    public boolean containsType(String typeName) {
+        return getTypeByName(typeName)!=null;
+    }
+
     @Autowired
     private TypeDao typeDao;
 

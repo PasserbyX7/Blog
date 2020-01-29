@@ -27,46 +27,55 @@ import cn.service.TypeService;
 @RequestMapping("/admin")
 public class AdminTypeController {
 
-    @GetMapping("/type")//来到展示页面，分页显示所有type
-    public String types(@PageableDefault(size=10,sort = {"id"},direction=Sort.Direction.DESC) Pageable pageable,Model model){
-        model.addAttribute("page",typeService.listType(pageable));
+    @GetMapping("/type") // 来到展示页面，分页显示所有type
+    public String types(@PageableDefault(size = 10, sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+            Model model) {
+        model.addAttribute("page", typeService.listType(pageable));
         return LIST;
     }
-    @GetMapping("/typeEdit")//点击添加按钮，跳转至Edit页面
-    public String toTypeAddPage(Model model){
-        model.addAttribute("type",new Type());
+
+    @GetMapping("/typeEdit") // 点击添加按钮，跳转至Edit页面
+    public String toTypeAddPage(Model model) {
+        model.addAttribute("type", new Type());
         return EDIT;
     }
-    @GetMapping("/typeEdit/{id}")//点击编辑按钮，跳转至Edit页面
-    public String toTypeEditPage(@PathVariable Long id,Model model){
-        model.addAttribute("type",typeService.getType(id));
+
+    @GetMapping("/typeEdit/{id}") // 点击编辑按钮，跳转至Edit页面
+    public String toTypeEditPage(@PathVariable Long id, Model model) {
+        model.addAttribute("type", typeService.getType(id));
         return EDIT;
     }
-    //增
+
+    // 增
     @PostMapping("/types")
-    public String addType(@Valid Type type,BindingResult bindingResult ,RedirectAttributes attributes){
-        if(typeService.getTypeByName(type.getName())!=null)
-            bindingResult.rejectValue("name", "nameError","该分类已存在");
-        if(bindingResult.hasErrors())
-            return "admin/typeEdit";
+    public String addType(@Valid Type type, BindingResult bindingResult) {
+        if (typeService.containsType(type.getName()))
+            bindingResult.rejectValue("name", "nameError", "该分类已存在");
+        if (bindingResult.hasErrors())
+            return EDIT;
         typeService.saveType(type);
         return REDIRECT_LIST;
     }
-    //删
+
+    // 删
     @DeleteMapping("/types/{id}")
     public String deleteType(@PathVariable Long id) {
         typeService.deleteType(id);
         return REDIRECT_LIST;
     }
-    //改
+
+    // 改
     @PutMapping("/types")
-    public String updateType(Type type){
+    public String updateType(Type type, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return EDIT;
         typeService.saveType(type);
         return REDIRECT_LIST;
     }
+
     @Autowired
     private TypeService typeService;
-    private static final String LIST="admin/type";
-    private static final String EDIT="admin/typeEdit";
-    private static final String REDIRECT_LIST="redirect:/admin/type";
+    private static final String LIST = "admin/type";
+    private static final String EDIT = "admin/typeEdit";
+    private static final String REDIRECT_LIST = "redirect:/admin/type";
 }

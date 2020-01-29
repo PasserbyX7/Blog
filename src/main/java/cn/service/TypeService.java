@@ -20,4 +20,5 @@ public interface TypeService {
     List<Type>listTopType(Integer num);
     Long getTotalNum();
     void deleteType(Long id);
+    boolean containsType(String typeName);
 }

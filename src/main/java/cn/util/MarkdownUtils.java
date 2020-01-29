@@ -36,20 +36,6 @@ public class MarkdownUtils {
         TextContentRenderer renderer = TextContentRenderer.builder().build();
         return renderer.render(document);
     }
-
-    /**
-     * markdown格式转换成HTML格式
-     * 
-     * @param markdown
-     * @return
-     */
-    public static String markdownToHtml(String markdown) {
-        Parser parser = Parser.builder().build();
-        Node document = parser.parse(markdown);
-        HtmlRenderer renderer = HtmlRenderer.builder().build();
-        return renderer.render(document);
-    }
-
     /**
      * 增加扩展[标题锚点，表格生成] Markdown转换成HTML
      * 
@@ -79,12 +65,10 @@ public class MarkdownUtils {
         @Override
         public void setAttributes(Node node, String tagName, Map<String, String> attributes) {
             // 改变a标签的target属性为_blank
-            if (node instanceof Link) {
+            if (node instanceof Link)
                 attributes.put("target", "_blank");
-            }
-            if (node instanceof TableBlock) {
+            if (node instanceof TableBlock)
                 attributes.put("class", "ui celled table");
-            }
         }
     }
 }

@@ -23,7 +23,7 @@ import cn.service.TagService;
 public class TagController {
 
     @GetMapping("/tag/{id}")
-    public String tags(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
+    public String tags(@PageableDefault(size = 5,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
         //拿到以blog个数递减的全部tag，作为页面的上半部展示
         List<Tag>tags=tagService.listTopTag((tagService.getTotalNum().intValue()));
         //确定被选中的tag
@@ -33,7 +33,7 @@ public class TagController {
         model.addAttribute("page", blogService.listBlogByTag(pageable,tagService.getTag(id)));
         model.addAttribute("tags",tags);
         model.addAttribute("activeTagId",id);
-        return "tags";
+        return "tag";
     }
     @Autowired
     private TagService tagService;

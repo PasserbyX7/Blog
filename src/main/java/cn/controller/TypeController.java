@@ -23,7 +23,7 @@ import cn.service.TypeService;
 public class TypeController {
 
     @GetMapping("/types/{id}")
-    public String types(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
+    public String types(@PageableDefault(size = 5,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
         //拿到以blog个数递减的全部type，作为页面的上半部展示
         List<Type>types=typeService.listTopType((typeService.getTotalNum().intValue()));
         //确定被选中的type

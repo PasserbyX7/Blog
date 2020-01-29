@@ -86,10 +86,10 @@
         <div class="ui bottom attached segment">
             <div class="ui two column grid middle aligned" th:if="${page.totalPages}">
                 <div class="column">
-                    <a th:href="|/tags/${activeTagId}?page=${page.number-1}|" th:unless="${page.first}" class="ui button teal basic mini">上一页</a>
+                    <a th:href="|/tag/${activeTagId}?page=${page.number-1}|" th:unless="${page.first}" class="ui button teal basic mini">上一页</a>
                 </div>
                 <div class="column right aligned">
-                    <a th:href="|/tags/${activeTagId}?page=${page.number+1}|" th:unless="${page.last}" class="ui button teal basic mini">下一页</a>
+                    <a th:href="|/tag/${activeTagId}?page=${page.number+1}|" th:unless="${page.last}" class="ui button teal basic mini">下一页</a>
                 </div>
             </div>
         </div>

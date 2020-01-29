@@ -69,6 +69,11 @@ public class TagServiceImp implements TagService {
         return tagDao.count();
     }
 
+    @Override
+    public boolean containsTag(String tagName) {
+        return getTagByName(tagName)!=null;
+    }
+
     @Autowired
     private TagDao tagDao;
 }

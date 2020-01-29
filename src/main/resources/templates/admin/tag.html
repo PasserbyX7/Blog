@@ -32,8 +32,8 @@
                             <td th:text="${iterStat.count}"></td>
                             <td th:text="${tag.name}"></td>
                             <td>
-                                <form th:action="@{/admin/tag/{id}(id=${tag.id})}" method="POST">
-                                    <a th:href="@{/admin/tag/{id}(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
+                                <form th:action="@{/admin/tags/{id}(id=${tag.id})}" method="POST">
+                                    <a th:href="@{/admin/tagEdit/{id}(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
                                     <input type="hidden" name="_method" value="delete">
                                     <button type="submit" class="ui mini red basic button">删除</button>
                                 </form>

@@ -18,7 +18,7 @@
     <br><br><br><br><br><br><br><br>
     <div class="m-padding-tb-large m-container">
         <div class="ui container">
-            <form action="/admin/type" method="POST" class="ui form" th:object="${type}">
+            <form action="/admin/types" method="POST" class="ui form" th:object="${type}">
                 <input type="hidden" name="_method" value="put" th:unless="${#strings.isEmpty(type.name)}">
                 <input type="hidden" name="id" th:value="*{id}">
                 <div class="required field">
