@@ -22,6 +22,7 @@ public interface BlogService {
     Page<Blog> listBlogByType(Pageable pageable,Type type);
     Page<Blog> listBlog(Pageable pageable,Blog blog);
     Page<Blog> listBlog(Pageable pageable,String query);
+    Blog BlogContentToHtml(Blog blog);
     List<Pair<Integer,List<Blog>>>listBlogByArchive();
     List<Blog> listTopBlog(Integer num);
     void deleteBlog(Long id);

@@ -148,6 +148,12 @@ public class BlogServiceImp implements BlogService {
         blogDao.deleteById(id);
     }
 
+    @Override
+    public Blog BlogContentToHtml(Blog blog) {
+        blog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
+        return blog;
+    }
+
     @Autowired
     private BlogDao blogDao;
     @Autowired
