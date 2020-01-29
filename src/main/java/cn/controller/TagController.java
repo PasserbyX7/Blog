@@ -22,7 +22,7 @@ import cn.service.TagService;
 @Controller
 public class TagController {
 
-    @GetMapping("/tag/{id}")
+    @GetMapping("/tags/{id}")
     public String tags(@PageableDefault(size = 5,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model) {
         //拿到以blog个数递减的全部tag，作为页面的上半部展示
         List<Tag>tags=tagService.listTopTag((tagService.getTotalNum().intValue()));
