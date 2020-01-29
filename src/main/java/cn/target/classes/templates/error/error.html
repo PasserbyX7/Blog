@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error</title>
+</head>
+<body>
+    <h1>Error</h1>
+    <div th:utext="'Error url：'+${url}" ></div>
+    <!--  -->
+    <div th:utext="'Exception message：'+${exception.getMessage()}" ></div>
+    <ul>
+        <li th:each="st : ${exception.getStackTrace()}">
+            <span th:utext="${st}"></span>
+        </li>
+    </ul>
+</body>
+</html>

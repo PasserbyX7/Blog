@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/me.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <title>首页</title>
+</head>
+
+<body>
+    <nav th:replace="commons/index::menu(1)"></nav>
+    <!-- 中间内容 -->
+    <div class="m-padding-tb-large m-container">
+        <div class="ui container">
+            <div class="ui grid stackable">
+                <!-- left -->
+                <div class="eleven wide column">
+                    <!-- header -->
+                    <div class="ui segment top attached">
+                        <div class="ui two column grid middle aligned">
+                            <div class="column">
+                                <h3 class="ui teal header">博客</h3>
+                            </div>
+                            <div class="column right aligned">
+                                共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}"></h2> 篇
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content -->
+                    <div class="ui attached segment">
+                        <div class="ui segment vertical padded m-padding-tb-big" th:each="blog : ${page.content}">
+                            <div class="ui middle aligned mobile reversed stackable grid">
+                                <!-- article -->
+                                <div class="eleven wide column">
+                                    <h3 class="ui header"><a target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black" th:text="${blog.title}"></a></h3>
+                                    <p class="m-text" th:text="|${blog.description}...|"></p>
+                                    <!-- footer -->
+                                    <div class="ui grid">
+                                        <!-- left -->
+                                        <div class="eleven wide column">
+                                            <div class="ui horizontal link list mini">
+                                                <div class="item">
+                                                    <!-- 头像 -->
+                                                    <a href="/about">
+                                                        <img class="ui avatar image" th:src="${blog.user.avatar}">
+                                                    </a>
+                                                    <div class="content"><a href="/about" class="header" th:text="${blog.user.nickname}"></a></div>
+                                                </div>
+                                                <class class="item">
+                                                    <i class="calender icon"></i><span th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd')}"></span>
+                                                </class>
+                                                <class class="item">
+                                                    <i class="eye icon"></i><span th:text="${blog.viewNum}"></span>
+                                                </class>
+                                            </div>
+                                        </div>
+                                        <!-- right -->
+                                        <div class="five wide column right aligned">
+                                            <a href="#" class="ui label teal basic m-padding-tiny m-text-thin" th:text="${blog.type.name}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <!-- image -->
+                                    <a target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
+                                        <img class="ui rounded image m-body-pic-size" th:src="${blog.picture}">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer -->
+                    <div class="ui bottom attached segment">
+                        <div class="ui two column grid middle aligned" th:if="${page.totalPages}">
+                            <div class="column">
+                                <a th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui button teal basic mini">上一页</a>
+                            </div>
+                            <div class="column right aligned">
+                                <a th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}" class="ui button teal basic mini">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- right -->
+                <div class="five wide column">
+                    <!-- 分类 -->
+                    <div class="ui segments">
+                        <!-- top-column -->
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid middle aligned">
+                                <div class="column">
+                                    <i class="idea icon"></i>分类
+                                </div>
+                                <div class="column right aligned">
+                                    <a href="/types/-1" target="_blank">more<i class="angle double right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- button-list -->
+                        <div class="ui teal segment">
+                            <div class="ui fluid vertical menu" th:each="type : ${types}">
+                                <a class="item" th:href="@{types/{id}(id=${type.id})}" target="_blank">
+                                    <span th:text="${type.name}"></span>
+                                    <div class="ui teal basic label" th:text="${#arrays.length(type.blogs)}"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 标签 -->
+                    <div class="ui segments m-margin-top-large">
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid middle aligned">
+                                <div class="column">
+                                    <i class="tags icon"></i>标签
+                                </div>
+                                <div class="column right aligned">
+                                    <a href="/tags/-1" target="_blank">more<i class="angle double right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui teal segment">
+                            <a class="ui teal basic label m-margin-tb-tiny" th:each="tag : ${tags}" th:href="@{tags/{id}(id=${tag.id})}">
+                                <span th:text="${tag.name}"></span>
+                                <div class="detail" th:text="${#arrays.length(tag.blogs)}"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 推荐 -->
+                    <div class=" ui segments m-margin-top-large">
+                        <div class="ui secondary segment">
+                            <i class="bookmark icon"></i>推荐
+                        </div>
+                        <div class="ui teal segment">
+                            <div class="ui fluid vertical menu" th:each="blog : ${recommendBlogs}">
+                                <a class="item" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" style="text-align: center;">
+                                    <span th:text="${blog.title}"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 二维码 -->
+                    <h4 class="ui horizontal divider header">扫码关注</h4>
+                    <div class="ui card centered m-qr-code-pic-size">
+                        <img src="/img/QR code.png" alt="" class="ui rounded image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="commons/index::footer"></footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script>
+    $(".toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+</script>
+
+</html>
