@@ -19,7 +19,7 @@ public class BlogController {
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id,Model model) {
         Blog blog=blogService.getBlog(id);
-        blog.setContent(MarkdownUtils.markdownToHTMLExtensions(blog.getContent()));
+        blog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
         model.addAttribute("blog",blog);
         return "blog";
     }

@@ -24,44 +24,67 @@ import org.commonmark.renderer.text.TextContentRenderer;
  */
 public class MarkdownUtils {
 
+    /**
+     * markdown格式转换成TEXT格式
+     * 
+     * @param markdown
+     * @return
+     */
     public static String markdownToText(String markdown) {
         Parser parser = Parser.builder().build();
-        Node node = parser.parse(markdown);
-        return TextContentRenderer.builder().build().render(node);
+        Node document = parser.parse(markdown);
+        TextContentRenderer renderer = TextContentRenderer.builder().build();
+        return renderer.render(document);
     }
 
-    public static String markdownToHTML(String markdown) {
+    /**
+     * markdown格式转换成HTML格式
+     * 
+     * @param markdown
+     * @return
+     */
+    public static String markdownToHtml(String markdown) {
         Parser parser = Parser.builder().build();
-        Node node = parser.parse(markdown);
-        return HtmlRenderer.builder().build().render(node);
+        Node document = parser.parse(markdown);
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        return renderer.render(document);
     }
 
-    public static String markdownToHTMLExtensions(String markdown) {
-        // 为标题生成id以便于前端插件自动生成目录
+    /**
+     * 增加扩展[标题锚点，表格生成] Markdown转换成HTML
+     * 
+     * @param markdown
+     * @return
+     */
+    public static String markdownToHtmlExtensions(String markdown) {
+        // h标题生成id
         Set<Extension> headingAnchorExtensions = Collections.singleton(HeadingAnchorExtension.create());
-        // 将markdown中的table转换为html
+        // 转换table的HTML
         List<Extension> tableExtension = Arrays.asList(TablesExtension.create());
         Parser parser = Parser.builder().extensions(tableExtension).build();
-        Node node = parser.parse(markdown);
+        Node document = parser.parse(markdown);
         HtmlRenderer renderer = HtmlRenderer.builder().extensions(headingAnchorExtensions).extensions(tableExtension)
                 .attributeProviderFactory(new AttributeProviderFactory() {
-                    @Override
                     public AttributeProvider create(AttributeProviderContext context) {
                         return new CustomAttributeProvider();
                     }
                 }).build();
-        return renderer.render(node);
+        return renderer.render(document);
     }
 
-    //处理标签属性
+    /**
+     * 处理标签的属性
+     */
     static class CustomAttributeProvider implements AttributeProvider {
         @Override
         public void setAttributes(Node node, String tagName, Map<String, String> attributes) {
-            if(node instanceof Link)
+            // 改变a标签的target属性为_blank
+            if (node instanceof Link) {
                 attributes.put("target", "_blank");
-            if(node instanceof TableBlock)
+            }
+            if (node instanceof TableBlock) {
                 attributes.put("class", "ui celled table");
+            }
         }
     }
-
 }

@@ -51,5 +51,4 @@ public class CommentServiceImp implements CommentService {
 
     @Autowired
     CommentDao commentDao;
-
 }

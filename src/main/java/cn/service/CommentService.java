@@ -10,6 +10,4 @@ import cn.domain.Comment;
 public interface CommentService {
     List<Comment>listCommentByBlogId(Long id);
     Comment saveComment(Comment comment);
-
-
 }

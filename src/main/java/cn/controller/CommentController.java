@@ -1,6 +1,5 @@
 package cn.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import cn.domain.Comment;
 import cn.domain.User;
-import cn.service.BlogService;
 import cn.service.CommentService;
 
 /**
@@ -30,23 +28,19 @@ public class CommentController {
 
     @PostMapping("/comments")//增
     public String post(Comment comment,HttpSession session) {
+        //如果当前用户是管理员，则设置管理员专属头像及权限
         User user=(User)session.getAttribute("user");
         if(user!=null){
             comment.setAvatar(user.getAvatar());
             comment.setAdminComment(true);
-        }else{
+        }else
             comment.setAvatar(avatar);
-            comment.setAdminComment(false);
-        }
-        Long blogId=comment.getBlog().getId();
-        comment.setBlog(blogService.getBlog(blogId));
+        //保存comment
         commentService.saveComment(comment);
-        return "redirect:/comment/"+blogId;
+        return "redirect:/comment/"+comment.getBlog().getId();//重定向到blog页面
     }
     @Value("${comment.avatar}")
     private String avatar;
     @Autowired
     private CommentService commentService;
-    @Autowired
-    private BlogService blogService;
 }

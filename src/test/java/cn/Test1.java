@@ -11,8 +11,9 @@ public class Test1 {
 
     @Test
     public void testUtil() {
-        String text=MarkdownUtils.markdownToText("#小明");
-        String t=MarkdownUtils.markdownToHTMLExtensions("#小明");
-        System.out.println(t);
+        String text1=MarkdownUtils.markdownToText("# This is *Sparta*");
+        String text2=MarkdownUtils.markdownToHtmlExtensions("# This is *Sparta*");
+        System.out.println(text1);
+        System.out.println(text2);
     }
 }

@@ -47,9 +47,13 @@ public class saveTest {
     public void test() {
         System.out.println("-----------------------------------");
         String content=blogService.getBlog(3L).getContent();
-        System.out.println(content);
+        System.out.println(content);//原mk格式
         System.out.println("-----------------------------------");
         System.out.println(MarkdownUtils.markdownToText(content));
+        System.out.println("-----------------------------------");
+        System.out.println(MarkdownUtils.markdownToHtml(content));
+        System.out.println("-----------------------------------");
+        System.out.println(MarkdownUtils.markdownToHtmlExtensions(content));
     }
     // public static String render(String text) {
     //     Parser parser = Parser.builder().build();
