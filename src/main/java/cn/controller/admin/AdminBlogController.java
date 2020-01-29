@@ -49,7 +49,7 @@ public class AdminBlogController {
 
     @GetMapping("/blog") // blog列表展示页面
     public String blogs(
-            @PageableDefault(size = 10, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
+            @PageableDefault(size = 7, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
             Blog blog, Model model) {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         model.addAttribute("types", typeService.listType());
@@ -58,7 +58,7 @@ public class AdminBlogController {
 
     @PostMapping("/blogs/search")
     public String search(
-            @PageableDefault(size = 10, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
+            @PageableDefault(size = 7, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
             Blog blog, Model model) {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         return LIST + "::blogList";

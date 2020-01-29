@@ -27,6 +27,7 @@ import cn.domain.Blog;
 import cn.domain.Tag;
 import cn.domain.Type;
 import cn.service.BlogService;
+import cn.service.CommentService;
 import cn.util.MarkdownUtils;
 
 /**
@@ -49,6 +50,7 @@ public class BlogServiceImp implements BlogService {
         blog.setUpdateTime(LocalDateTime.now());
         return blogDao.save(blog);
     }
+
     @Transactional
     @Override
     public Blog getBlog(Long id) {
@@ -60,7 +62,6 @@ public class BlogServiceImp implements BlogService {
     public Page<Blog> listBlog(Pageable pageable, Blog blog) {
         return blogDao.findAll(new Specification<Blog>() {
             private static final long serialVersionUID = 1L;
-
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
@@ -81,8 +82,8 @@ public class BlogServiceImp implements BlogService {
     }
 
     @Override
-    public Page<Blog> listBlog(Pageable pageable) {
-        return blogDao.findAll(pageable);
+    public Page<Blog> listPublishedBlog(Pageable pageable) {
+        return blogDao.findByPublishTrue(pageable);
     }
 
     @Override
@@ -137,15 +138,18 @@ public class BlogServiceImp implements BlogService {
     public List<Blog> listTopBlog(Integer num) {
         Sort sort = Sort.by(Sort.Direction.DESC, "updateTime");
         Pageable pageable = PageRequest.of(0, num, sort);
-        return blogDao.findTop(pageable);
+        return blogDao.findByRecommendTrue(pageable);
     }
 
     @Transactional
     @Override
     public void deleteBlog(Long id) {
+        commentService.deleteCommentByBlogId(id);
         blogDao.deleteById(id);
     }
 
     @Autowired
     private BlogDao blogDao;
+    @Autowired
+    private CommentService commentService;
 }

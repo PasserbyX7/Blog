@@ -23,7 +23,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String blogs(@PageableDefault(size = 5,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Model model){
-        model.addAttribute("page",blogService.listBlog(pageable));
+        model.addAttribute("page",blogService.listPublishedBlog(pageable));
         model.addAttribute("types", typeService.listTopType(typeNum));
         model.addAttribute("tags", tagService.listTopTag(tagNum));
         model.addAttribute("recommendBlogs", blogService.listTopBlog(recommendBlogNum));

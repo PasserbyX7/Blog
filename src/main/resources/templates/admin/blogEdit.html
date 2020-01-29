@@ -78,25 +78,25 @@
                 <div class="inline fields">
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="recommend" name="recommend" class="hidden" th:checked="*{recommend}">
+                            <input type="checkbox" id="recommend" name="recommend" class="hidden" th:checked="${blog}==null?*{recommend}:true">
                             <label for="recommend">推荐</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="reward" name="reward" class="hidden" th:checked="*{reward}">
+                            <input type="checkbox" id="reward" name="reward" class="hidden" th:checked="${blog}==null?*{reward}:true">
                             <label for="reward">赞赏</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="commentable" name="commentable" class="hidden" th:checked="*{commentable}">
+                            <input type="checkbox" id="commentable" name="commentable" class="hidden" th:checked="${blog}==null?*{commentable}:true">
                             <label for="commentable">评论</label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="reproduction" name="reproduction" class="hidden" th:checked="*{reproduction}">
+                            <input type="checkbox" id="reproduction" name="reproduction" class="hidden" th:checked="${blog}==null?*{reproduction}:true">
                             <label for="reproduction">允许转载</label>
                         </div>
                     </div>

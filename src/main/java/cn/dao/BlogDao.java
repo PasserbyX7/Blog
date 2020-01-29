@@ -16,13 +16,14 @@ import cn.domain.Blog;
  * BlogDao
  */
 public interface BlogDao extends JpaRepository<Blog,Long>,JpaSpecificationExecutor<Blog>{
-    @Query("select b from Blog b where b.recommend=true")
-    List<Blog> findTop(Pageable pageable);
+    List<Blog> findByRecommendTrue(Pageable pageable);
     @Query("select b from Blog b where b.title like ?1 or b.content like ?1")
     Page<Blog>findByQuery(Pageable pageable,String query);
+    Page<Blog>findByPublishTrue(Pageable pageable);
     List<Blog> findAllByOrderByCreateTimeDesc();
     @Transactional
     @Modifying
     @Query("update Blog b set b.viewNum=b.viewNum+1 where b.id=?1")
     int updateViewNum(Long id);
+    
 }

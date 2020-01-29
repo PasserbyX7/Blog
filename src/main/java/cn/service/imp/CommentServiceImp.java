@@ -20,6 +20,11 @@ import cn.service.CommentService;
 public class CommentServiceImp implements CommentService {
 
     @Override
+    public Comment getComment(Long id) {
+        return commentDao.findById(id).orElse(null);
+    }
+
+    @Override
     public List<Comment> listCommentByBlogId(Long id) {
         Sort sort = Sort.by(Sort.Direction.ASC, "createTime");
         List<Comment> result = new ArrayList<>();
@@ -39,6 +44,28 @@ public class CommentServiceImp implements CommentService {
             }
         }
         return result;
+    }
+
+    @Transactional
+    @Override
+    public void deleteComment(Long id) {
+        List<Comment>comments=commentDao.findByParentCommentIdEquals(id);
+        if(comments!=null)
+            comments.forEach(comment->{
+                comment.setParentComment(null);
+                commentDao.save(comment);
+            });
+        commentDao.deleteById(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteCommentByBlogId(Long id) {
+        List<Comment>comments=commentDao.findByBlogIdEquals(id);
+        if(comments!=null)
+            comments.forEach(comment->{
+                deleteComment(comment.getId());
+            });
     }
 
     @Transactional

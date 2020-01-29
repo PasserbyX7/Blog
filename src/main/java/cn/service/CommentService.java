@@ -9,5 +9,8 @@ import cn.domain.Comment;
  */
 public interface CommentService {
     List<Comment>listCommentByBlogId(Long id);
+    Comment getComment(Long id);
     Comment saveComment(Comment comment);
+    void deleteComment(Long id);
+    void deleteCommentByBlogId(Long id);
 }

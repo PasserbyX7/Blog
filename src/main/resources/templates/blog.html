@@ -102,17 +102,20 @@
                                 <a class="avatar"><img th:src="${comment.avatar}"></a><!-- 头像 -->
                                 <div class="content"><!-- 评论内容 -->
                                 <a class="author" >
-                                  <span th:text="${comment.name}"></span>
-                                  <div class="ui mini basic teal label m-padded-mini" th:if="${comment.adminComment}">博主</div>
+                                    <span th:text="${comment.name}"></span>
+                                    <div class="ui mini basic teal label m-padded-mini" th:if="${comment.adminComment}">博主</div>
                                 </a>
                                 <div class="metadata">
                                   <span class="date" th:text="${#temporals.format(comment.createTime,'yyyy-MM-dd HH:mm')}"></span>
                                 </div>
                                 <div class="text" th:text="${comment.content}"></div>
                                 <div class="actions">
-                                  <a class="reply" th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="reply(this)">回复</a>
-                                  <form action="" class="m-inline-block reply" >
-                                      <a  th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="reply(this)">删除</a>
+                                    <i class="comment outline icon"></i>
+                                  <a class="reply" th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="replyComment(this)">回复</a>
+                                  <form th:action="@{/comments/{id}(id=${comment.id})}" class="m-inline-block reply" th:if="${session.user}!=null" method="POST">
+                                      <i class="trash alternate outline icon"></i>
+                                      <a  onclick="deleteComment(this)" >删除</a>
+                                      <input type="hidden" name="_method" value="delete">
                                   </form>
                                 </div>
                                 </div>
@@ -121,18 +124,21 @@
                                         <a class="avatar"><img th:src="${reply.avatar}"></a><!-- 头像 -->
                                         <div class="content"><!-- 评论内容 -->
                                         <a class="author" >
-                                          <span th:text="${reply.name}"></span>&nbsp;
-                                          <span th:text="|@${reply.parentComment.name}|" class="m-teal"></span>
-                                          <div class="ui mini basic teal label m-padded-mini" th:if="${reply.adminComment}">博主</div>
+                                            <span th:text="${reply.name}"></span>&nbsp;
+                                            <div class="ui mini basic teal label m-padded-mini" th:if="${reply.adminComment}">博主</div>
+                                            <span th:text="|@${reply.parentComment.name}|" class="m-teal"></span>
                                         </a>
                                         <div class="metadata">
                                           <span class="date" th:text="${#temporals.format(reply.createTime,'yyyy-MM-dd HH:mm')}"></span>
                                         </div>
                                         <div class="text" th:text="${reply.content}"></div>
                                         <div class="actions">
-                                          <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="reply(this)">回复</a>
-                                          <form action="" class="m-inline-block reply">
-                                              <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="reply(this)">删除</a>
+                                            <i class="comment outline icon"></i>
+                                          <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="replyComment(this)">回复</a>
+                                          <form th:action="@{/comments/{id}(id=${reply.id})}" class="m-inline-block reply" th:if="${session.user}!=null" method="POST">
+                                              <i class="trash alternate outline icon"></i>
+                                              <a onclick="deleteComment(this)">删除</a>
+                                              <input type="hidden" name="_method" value="delete">
                                           </form>
                                         </div>
                                         </div>
@@ -200,6 +206,10 @@
         on: "click",
         position: "bottom center"
     });
+    $("#wechat").popup({
+        popup: $(".wechatImg"),
+        position: "left center"
+    });
     $(".toc.button").popup({
         popup: $(".toc-container"),
         on: "click",
@@ -210,10 +220,6 @@
         contentSelector: '.js-toc-content',
         headingSelector: 'h1, h2, h3',
         hasInnerContainers: true,
-    });
-    $("#wechat").popup({
-        popup: $(".wechatImg"),
-        position: "left center"
     });
     var url=/*[[@{/blog{id}(id=${blog.id})}]]*/"";
     var domain=/*[[#{domain}]]*/"";
@@ -275,12 +281,15 @@
             $("[name='content']").attr("placeholder","");
         })
     }
-    function reply(comment) {
+    function replyComment(comment) {
         var commentId=$(comment).data("comment-id");
         var name=$(comment).data("name");
         $("[name='content']").attr("placeholder","@"+name).focus();
         $("[name='parentComment.id']").val(commentId);
         $(window).scrollTo($("#comment-form"))
+    }
+    function deleteComment(comment) {
+        $(comment).parent().submit();
     }
     //页面初次加载时显示评论
     $(function() {

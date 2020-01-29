@@ -12,4 +12,6 @@ import cn.domain.Comment;
  */
 public interface CommentDao extends JpaRepository<Comment,Long>{
     List<Comment>findByBlogId(Long id,Sort sort);
+    List<Comment>findByParentCommentIdEquals(Long id);
+    List<Comment>findByBlogIdEquals(Long id);
 }
