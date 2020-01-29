@@ -1,6 +1,8 @@
 package cn.service.imp;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,19 +45,14 @@ public class TagServiceImp implements TagService {
 
     @Override
     public List<Tag> listTopTag(Integer num) {
-        Sort sort=Sort.by(Sort.Direction.DESC, "blogs.size");
-        Pageable pageable=PageRequest.of(0,num,sort);
+        Sort sort = Sort.by(Sort.Direction.DESC, "blogs.size");
+        Pageable pageable = PageRequest.of(0, num, sort);
         return tagDao.findTop(pageable);
     }
 
     @Override
     public List<Tag> listTag() {
         return tagDao.findAll();
-    }
-
-    @Override
-    public List<Tag> listTag(List<Long> ids) {
-        return tagDao.findAllById(ids);
     }
 
     @Transactional
@@ -71,7 +68,20 @@ public class TagServiceImp implements TagService {
 
     @Override
     public boolean containsTag(String tagName) {
-        return getTagByName(tagName)!=null;
+        return getTagByName(tagName) != null;
+    }
+
+    @Override
+    public List<Tag> StringToTagList(String tagIds) {
+        //将形如"13,23"的字符串转为[13,23]这样的list
+        List<Long> ids = Arrays.asList(tagIds.split(",")).stream().map(Long::parseLong).collect(Collectors.toList());
+        return tagDao.findAllById(ids);
+    }
+
+    @Override
+    public String TagListToString(List<Tag> tags) {
+        //将id为13、23的tags转换形如"13,23"这样的字串
+        return String.join(",", tags.stream().map(Tag::getId).map(String::valueOf).collect(Collectors.toList()));
     }
 
     @Autowired

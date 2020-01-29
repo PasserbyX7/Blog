@@ -111,6 +111,9 @@
                                 <div class="text" th:text="${comment.content}"></div>
                                 <div class="actions">
                                   <a class="reply" th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="reply(this)">回复</a>
+                                  <form action="" class="m-inline-block reply" >
+                                      <a  th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="reply(this)">删除</a>
+                                  </form>
                                 </div>
                                 </div>
                                 <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
@@ -128,6 +131,9 @@
                                         <div class="text" th:text="${reply.content}"></div>
                                         <div class="actions">
                                           <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="reply(this)">回复</a>
+                                          <form action="" class="m-inline-block reply">
+                                              <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="reply(this)">删除</a>
+                                          </form>
                                         </div>
                                         </div>
                                     </div>

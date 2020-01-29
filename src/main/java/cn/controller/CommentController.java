@@ -37,7 +37,7 @@ public class CommentController {
             comment.setAvatar(avatar);
         //保存comment
         commentService.saveComment(comment);
-        return "redirect:/comment/"+comment.getBlog().getId();//重定向到blog页面
+        return "redirect:/comment/"+comment.getBlog().getId();//刷新comment且重定向到blog页面
     }
     @Value("${comment.avatar}")
     private String avatar;
