@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/me.css">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <title>分类管理</title>
 </head>
 
@@ -32,11 +32,9 @@
                             <td th:text="${iterStat.count}"></td>
                             <td th:text="${type.name}"></td>
                             <td>
-                                <form th:action="@{/admin/types/{id}(id=${type.id})}" method="POST">
-                                    <a th:href="@{/admin/typeEdit/{id}(id=${type.id})}" class="ui mini teal basic button">编辑</a>
-                                    <input type="hidden" name="_method" value="delete">
-                                    <button type="submit" class="ui mini red basic button">删除</button>
-                                </form>
+                                    <a th:href="@{/admin/typeEdit/{id}(id=${type.id})}"
+                                        class="ui mini teal basic button">编辑</a>
+                                    <a th:attr="uri=@{/admin/types/{id}(id=${type.id})}" class="ui mini red basic button delete-btn">删除</a>
                             </td>
                         </tr>
                     </tbody>
@@ -44,8 +42,10 @@
                         <tr>
                             <th colspan="3">
                                 <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                                    <a th:href="@{/admin/type(page=${page.number}-1)}" class="item" th:unless="${page.first}">上一页</a>
-                                    <a th:href="@{/admin/type(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
+                                    <a th:href="@{/admin/type(page=${page.number}-1)}" class="item"
+                                        th:unless="${page.first}">上一页</a>
+                                    <a th:href="@{/admin/type(page=${page.number}+1)}" class="item"
+                                        th:unless="${page.last}">下一页</a>
                                 </div>
                                 <a href="/admin/typeEdit" class="ui mini right floated teal basic button">添加</a>
                             </th>
@@ -56,6 +56,9 @@
         </div>
     </div>
     <footer th:replace="commons/index::footer"></footer>
+    <form method="POST" id="delete-form">
+        <input type="hidden" name="_method" value="delete">
+    </form>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
@@ -64,6 +67,11 @@
         $(".m-item").toggleClass("m-mobile-hide");
     });
     $(".ui.dropdown").dropdown();
+    //删除type
+    $(".delete-btn").click(function () {
+        if (confirm("确定删除该分类吗？"))
+            $("#delete-form").attr("action", $(this).attr("uri")).submit();
+    })
 </script>
 
 </html>

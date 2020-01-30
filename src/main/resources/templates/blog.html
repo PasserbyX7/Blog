@@ -78,8 +78,8 @@
                 <div class="ui middle aligned grid">
                     <div class="eleven wide column">
                         <ui class="list">
-                            <li th:text="|作者：${blog.user.nickname}|"></li>
-                            <li th:text="|发表时间：${#temporals.format(blog.updateTime,'yyyy-MM-dd HH:mm')}|"></li>
+                            <li th:text="|作者：*{blog.user.nickname}|"></li>
+                            <li th:text="|发表时间：*{#temporals.format(blog.updateTime,'yyyy-MM-dd HH:mm')}|"></li>
                             <li>版权声明：自由转载-非商用-非衍名-保持署名（知识共享3.0许可证）</li>
                             <li>公众号转载：请在文末添加作者公众号二维码</li>
                         </ui>
@@ -110,13 +110,10 @@
                                 </div>
                                 <div class="text" th:text="${comment.content}"></div>
                                 <div class="actions">
-                                    <i class="comment outline icon"></i>
+                                  <i class="comment outline icon"></i>
                                   <a class="reply" th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="replyComment(this)">回复</a>
-                                  <form th:action="@{/comments/{id}(id=${comment.id})}" class="m-inline-block reply" th:if="${session.user}!=null" method="POST">
-                                      <i class="trash alternate outline icon"></i>
-                                      <a  onclick="deleteComment(this)" >删除</a>
-                                      <input type="hidden" name="_method" value="delete">
-                                  </form>
+                                  <i class="trash alternate outline icon"></i>
+                                  <a class="reply delete-btn" th:attr="uri=@{comments/{id}(id=${comment.id})}">删除</a>
                                 </div>
                                 </div>
                                 <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
@@ -133,13 +130,10 @@
                                         </div>
                                         <div class="text" th:text="${reply.content}"></div>
                                         <div class="actions">
-                                            <i class="comment outline icon"></i>
+                                          <i class="comment outline icon"></i>
                                           <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="replyComment(this)">回复</a>
-                                          <form th:action="@{/comments/{id}(id=${reply.id})}" class="m-inline-block reply" th:if="${session.user}!=null" method="POST">
-                                              <i class="trash alternate outline icon"></i>
-                                              <a onclick="deleteComment(this)">删除</a>
-                                              <input type="hidden" name="_method" value="delete">
-                                          </form>
+                                          <i class="trash alternate outline icon"></i>
+                                          <a class="reply delete-btn" th:attr="uri=@{comments/{id}(id=${reply.id})}" onclick="deleteComment(this)">删除</a>
                                         </div>
                                         </div>
                                     </div>
@@ -190,6 +184,9 @@
     </div>
     <div id="qrCode" class="ui flowing popup transition hidden wechatImg m-qr-code-pic-size-big"></div>
     <footer th:replace="commons/index::footer"></footer>
+    <form method="POST" id="delete-form">
+        <input type="hidden" name="_method" value="delete">
+    </form>
 </body>
 <script src="/lib/prism/prism.js"></script>
 <script src="/lib/qrcode/qrcode.min.js"></script>
@@ -288,8 +285,10 @@
         $("[name='parentComment.id']").val(commentId);
         $(window).scrollTo($("#comment-form"))
     }
-    function deleteComment(comment) {
-        $(comment).parent().submit();
+    //删除comment
+    function deleteComment() {
+        if (confirm("确定删除该评论吗？"))
+            $("#delete-form").attr("action", $(this).attr("uri")).submit();
     }
     //页面初次加载时显示评论
     $(function() {
