@@ -35,7 +35,7 @@ public class Blog {
     private String content;
     private String picture;
     @NotNull
-    private String flag;
+    private String flag;//原创、转载or翻译
     private String description;
     private Integer viewNum;
     private boolean reward;

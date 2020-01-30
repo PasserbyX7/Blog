@@ -39,14 +39,20 @@ public class BlogServiceImp implements BlogService {
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
-        if(blog.getId()==null)
+        if(blog.getId()==null){//如果是新增，新建创建时间和浏览次数
             blog.setCreateTime(LocalDateTime.now());
-        if (blog.getViewNum() == null)
             blog.setViewNum(0);
+        }else{//如果是修改，继承原blog的创建时间和浏览次数
+            Blog originBlog=getBlog(blog.getId());
+            blog.setCreateTime(originBlog.getCreateTime());
+            blog.setViewNum(originBlog.getViewNum());
+        }
+        //为blog增加简介
         String description=MarkdownUtils.markdownToText(blog.getContent());
         if(description.length()>150)
             description=description.substring(0,150);
         blog.setDescription(description);
+        //设置更新时间
         blog.setUpdateTime(LocalDateTime.now());
         return blogDao.save(blog);
     }
