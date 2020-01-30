@@ -113,7 +113,7 @@
                                   <i class="comment outline icon"></i>
                                   <a class="reply" th:attr="data-comment-id=${comment.id},data-name=${comment.name}"  onclick="replyComment(this)">回复</a>
                                   <i class="trash alternate outline icon"></i>
-                                  <a class="reply delete-btn" th:attr="uri=@{comments/{id}(id=${comment.id})}">删除</a>
+                                  <a class="reply delete-btn" th:attr="uri=@{/comments/{id}(id=${comment.id})}" onclick="deleteComment(this)">删除</a>
                                 </div>
                                 </div>
                                 <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
@@ -133,7 +133,7 @@
                                           <i class="comment outline icon"></i>
                                           <a class="reply" th:attr="data-comment-id=${reply.id},data-name=${reply.name}"  onclick="replyComment(this)">回复</a>
                                           <i class="trash alternate outline icon"></i>
-                                          <a class="reply delete-btn" th:attr="uri=@{comments/{id}(id=${reply.id})}" onclick="deleteComment(this)">删除</a>
+                                          <a class="reply delete-btn" th:attr="uri=@{/comments/{id}(id=${reply.id})}" onclick="deleteComment(this)">删除</a>
                                         </div>
                                         </div>
                                     </div>
@@ -285,10 +285,10 @@
         $("[name='parentComment.id']").val(commentId);
         $(window).scrollTo($("#comment-form"))
     }
-    //删除comment
-    function deleteComment() {
+    // 删除comment
+    function deleteComment(comment) {
         if (confirm("确定删除该评论吗？"))
-            $("#delete-form").attr("action", $(this).attr("uri")).submit();
+            $("#delete-form").attr("action", $(comment).attr("uri")).submit();
     }
     //页面初次加载时显示评论
     $(function() {
