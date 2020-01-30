@@ -18,6 +18,8 @@ public class SearchController {
 
     @GetMapping("/search")
     public String search(@PageableDefault(size = 2,sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Model model,String query) {
+        if(query.length()>10)
+            query=query.substring(0,10);
         model.addAttribute("page",blogService.listBlog(pageable, query));
         model.addAttribute("query", query);
         return "search";

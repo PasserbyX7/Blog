@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,7 +67,9 @@ public class AdminBlogController {
 
     // 增、改blog
     @PostMapping("/blogs")
-    public String addBlog(Blog blog, String tagIds, HttpSession session) {
+    public String addBlog(Blog blog, String tagIds, HttpSession session,BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return EDIT;
         //设置blog的type
         blog.setType(typeService.getType(blog.getType().getId()));
         //设置blog的tags
