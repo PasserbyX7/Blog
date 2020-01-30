@@ -1,10 +1,13 @@
 body{
     background: url("/img/bg.png") !important;
 }
+.m-avatar{
+    height: 30px !important;
+    width: 30px !important;
+}
 /* img */
 .m-img-size-adaptive{
     height: auto !important;
-
 }
 /* shadow */
 .m-shadow-small{

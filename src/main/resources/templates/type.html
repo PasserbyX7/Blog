@@ -33,48 +33,7 @@
             </div>
         </div>
         <div class="ui top attached teal segment">
-            <div class="ui segment vertical padded m-padding-tb-big" th:each="blog : ${page.content}">
-                <div class="ui middle aligned mobile reversed stackable grid">
-                    <!-- article -->
-                    <div class="eleven wide column">
-                        <h3 class="ui header"><a target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black"
-                                th:text="${blog.title}"></a></h3>
-                        <p class="m-text" th:text="|${blog.description}...|"></p>
-                        <!-- footer -->
-                        <div class="ui grid">
-                            <!-- left -->
-                            <div class="eleven wide column">
-                                <div class="ui horizontal link list mini">
-                                    <div class="item">
-                                        <!-- 头像 -->
-                                        <a href="/about">
-                                            <img class="ui avatar image" th:src="${blog.user.avatar}">
-                                        </a>
-                                        <div class="content"><a href="/about" class="header"
-                                                th:text="${blog.user.nickname}"></a></div>
-                                    </div>
-                                    <class class="item">
-                                        <i class="calender icon"></i><span th:text="${#temporals.format(blog.updateTime,'yyyy-MM-dd')}"></span>
-                                    </class>
-                                    <class class="item">
-                                        <i class="eye icon"></i><span th:text="${blog.viewNum}"></span>
-                                    </class>
-                                </div>
-                            </div>
-                            <!-- right -->
-                            <div class="five wide column right aligned">
-                                <a href="#" class="ui label teal basic m-padding-tiny m-text-thin" th:text="${blog.type.name}"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="five wide column">
-                        <!-- image -->
-                        <a target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
-                            <img class="ui rounded image m-body-pic-size" th:src="${blog.picture}">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <div th:replace="commons/index::item"></div>
         </div>
         <div class="ui bottom attached segment">
             <div class="ui two column grid middle aligned" th:if="${page.totalPages}">

@@ -17,10 +17,8 @@
     <!-- 中间内容 -->
     <div class="m-padding-tb-large m-container">
         <div class="ui container">
-            <div class="ui large success message" style="text-align: center;">
-                <h1 th:text="${session.user.nickname+'，欢迎回来'}"></h1>
-            </div>
-            <img src="https://i.picsum.photos/id/400/1000/400.jpg" alt="" class="ui rounded bordered fluid image">
+                <h1 style="text-align: center;" th:text="${session.user.nickname+'，欢迎回来'}"></h1>
+            <img src="/img/adminIndexBg.jpg" alt="" class="ui rounded bordered fluid image">
         </div>
     </div>
     <footer th:replace="commons/index::footer"></footer>
